@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using PCL.Core.App;
@@ -12,15 +12,11 @@ public static class UpdateManager
 {
     public static bool isUpdateWaitingRestart;
 
+    // PCL-In 修改:使用 GitHubReleasesUpdateSource 检测 ningqi24/PCL-In 仓库的 release。
+    // 检测流程:GitHub Releases API -> 解析 tag_name -> 找匹配架构的 asset -> 下载更新。
     public static UpdatesWrapperModel remoteServer = new(new List<IUpdateSource>
     {
-        new UpdatesMirrorChyanModel(),
-        new UpdatesRandomModel(new[]
-        {
-            new UpdatesMinioModel("https://s3.pysio.online/pcl2-ce/", "Pysio"),
-            new UpdatesMinioModel("https://staticassets.naids.com/resources/pclce/", "Naids")
-        }),
-        new UpdatesMinioModel("https://github.com/PCL-Community/PCL2_CE_Server/raw/main/", "GitHub")
+        new GitHubReleasesUpdateSource("ningqi24", "PCL-In", "PCL-In")
     });
 
     public static bool IsCurrentVersionBeta
@@ -72,7 +68,7 @@ public static class UpdateManager
 
     public static void UpdateStart(UpdateEnums.UpdateType type, string receivedKey = null, bool forceValidated = false)
     {
-        var dlTargetPath = ModBase.exePath + @"PCL\Plain Craft Launcher Community Edition.exe";
+        var dlTargetPath = ModBase.exePath + @"PCL\PCL-In.exe";
         ModBase.RunInNewThread(() =>
         {
             try
@@ -167,7 +163,7 @@ public static class UpdateManager
     {
         try
         {
-            var fileName = ModBase.exePath + @"PCL\Plain Craft Launcher Community Edition.exe";
+            var fileName = ModBase.exePath + @"PCL\PCL-In.exe";
             if (!File.Exists(fileName))
             {
                 ModBase.Log("[System] 更新失败：未找到更新文件");
@@ -231,7 +227,7 @@ public static class UpdateManager
     }
 
     public static ModLoader.LoaderTask<int, int> serverLoader =
-        new(Lang.Text("Update.Service.PclCe"),
+        new(Lang.Text("Update.Service.PclIn"),
             _ => LoadOnlineInfo(),
             priority: ThreadPriority.BelowNormal);
 

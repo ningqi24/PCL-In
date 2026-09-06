@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PCL.Core.App;
@@ -21,12 +21,11 @@ public partial class PageSetupUpdate
     private void Init()
     {
         ModAnimation.AniControlEnabled += 1;
-        TextMirrorCDK.Password = Config.Update.MirrorChyanKey;
 
         ComboSystemUpdateChannel.SelectedIndex = (int)Config.Update.UpdateChannel;
         ComboSystemUpdateMode.SelectedIndex = (int)Config.Update.UpdateMode;
 
-        TextCurrentVersion.Text = "PCL CE " + VersionNameFormat(ModBase.versionBaseName);
+        TextCurrentVersion.Text = "PCL-In " + VersionNameFormat(ModBase.versionBaseName);
         ModAnimation.AniControlEnabled -= 1;
         CheckUpdate();
     }
@@ -79,7 +78,7 @@ public partial class PageSetupUpdate
                         UpdateManager.IsCurrentVersionBeta
                             ? UpdateChannel.beta
                             : UpdateChannel.stable, SystemInfo.IsArm64System ? UpdateArch.arm64 : UpdateArch.x64);
-                    TextUpdateName.Text = "PCL CE " + VersionNameFormat(updateInfo.VersionName);
+                    TextUpdateName.Text = "PCL-In " + VersionNameFormat(updateInfo.VersionName);
                     var summary = updateInfo.Changelog.Between("<summary>", "</summary>");
                     if (!updateInfo.Changelog.Contains("<summary>") || string.IsNullOrWhiteSpace(summary.Trim()))
                         TextChangelog.Text = Lang.Text("Setup.Update.Changelog.Empty");
@@ -244,19 +243,9 @@ public partial class PageSetupUpdate
         }
     }
 
-    private void TextMirrorCDK_PasswordChanged(object sender, EventArgs e)
-    {
-        Config.Update.MirrorChyanKey = TextMirrorCDK.Password;
-    }
-
-    private void BtnGetMirrorCDK_Click(object sender, MouseButtonEventArgs e)
-    {
-        ModBase.OpenWebsite("https://mirrorchyan.com/");
-    }
-
     private void BtnChangelog_Click(object sender, MouseButtonEventArgs e)
     {
-        ModBase.OpenWebsite("https://github.com/PCL-Community/PCL2-CE/releases/v" + ModBase.versionBaseName);
+        ModBase.OpenWebsite("https://github.com/ningqi24/PCL-In/releases/v" + ModBase.versionBaseName);
     }
 
     public string VersionNameFormat(string str)

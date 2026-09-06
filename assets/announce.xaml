@@ -1,0 +1,16 @@
+<local:MyHint Margin="0,0,0,15" Text="欢迎使用 PCL-In！" IsWarn="False" />
+
+<local:MyCard Title="PCL-In 发布公告" Margin="0,0,0,15" CanSwap="True">
+    <StackPanel Margin="25,40,23,11">
+	    <TextBlock Margin="0,0,0,4" LineHeight="17" TextWrapping="Wrap"
+                   Text="PCL-In 现已发布！本版本基于 PCL Community Edition (PCL-CE) 二次开发，采用社区维护路线。" />
+		<TextBlock Margin="0,0,0,4" LineHeight="17" TextWrapping="Wrap"
+                   Text="支持离线验证、第三方皮肤站登录与正版(Microsoft)验证，欢迎使用！" />
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:MyButton MinWidth="160" Height="35" Padding="13,0" Margin="0,4,20,8" ColorType="Highlight"
+                        Text="前往 GitHub 仓库" EventType="打开网页" EventData="https://github.com/ningqi24/PCL-In" />
+        </StackPanel>
+    </StackPanel>
+</local:MyCard>
+
+<TextBlock Margin="0,8,0,8" HorizontalAlignment="Center" Text="不想看公告，可前往 设置 → 个性化 → 主页 选择空白选项" />

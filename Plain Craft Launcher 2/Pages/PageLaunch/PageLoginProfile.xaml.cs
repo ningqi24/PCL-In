@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,7 +47,8 @@ public partial class PageLoginProfile
         {
             foreach (var p in ProfileService.Profiles)
                 ProfileCollection.Add(new ProfileItem(p));
-            HintMicrosoft.Visibility = ProfileService.Profiles.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+            // PCL-In:移除"需要先进行一次正版验证"提示
+            HintMicrosoft.Visibility = Visibility.Collapsed;
             ModBase.Log("[Profile] 档案列表刷新完成");
         }
         catch (Exception ex)

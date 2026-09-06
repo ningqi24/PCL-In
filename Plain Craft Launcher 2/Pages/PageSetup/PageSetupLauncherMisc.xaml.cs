@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -49,7 +49,6 @@ public partial class PageSetupLauncherMisc
         CheckSystemDisableHardwareAcceleration.Checked = Config.System.DisableHardwareAcceleration;
         SliderAniFPS.Value = Config.System.AnimationFpsLimit;
         SliderMaxLog.Value = Config.System.MaxGameLog;
-        CheckSystemTelemetry.Checked = Config.System.Telemetry;
 
         // 网络
         TextSystemHttpProxy.Text = Config.Network.HttpProxy.CustomAddress;
@@ -57,6 +56,7 @@ public partial class PageSetupLauncherMisc
         TextSystemHttpProxyCustomPassword.Text = Config.Network.HttpProxy.CustomPassword;
         ((MyRadioBox)FindName($"RadioHttpProxyType{Config.Network.HttpProxy.Type}")).SetChecked(true, false);
         CheckNetDohEnable.Checked = Config.Network.EnableDoH;
+        CheckGithubProxy.Checked = Config.Network.GithubProxy;
 
         // 调试选项
         SliderDebugAnim.Value = Config.Debug.AnimationSpeed;
@@ -226,22 +226,22 @@ public partial class PageSetupLauncherMisc
 
     #endregion
 
-    #region 停止使用 PCL CE
+    #region 停止使用 PCL-In
 
-    private void BtnSystemStopUsingPclCe_Click(object sender, MouseButtonEventArgs e)
+    private void BtnSystemStopUsingPclIn_Click(object sender, MouseButtonEventArgs e)
     {
         var result = ModMain.MyMsgBox(
-            Lang.Text("Setup.Misc.System.StopUsingPclCe.Message"),
-            Lang.Text("Setup.Misc.System.StopUsingPclCe.Title"),
+            Lang.Text("Setup.Misc.System.StopUsingPclIn.Message"),
+            Lang.Text("Setup.Misc.System.StopUsingPclIn.Title"),
             Lang.Text("Common.Action.Continue"),
-            Lang.Text("Setup.Misc.System.StopUsingPclCe.ContinueAndRemove"),
+            Lang.Text("Setup.Misc.System.StopUsingPclIn.ContinueAndRemove"),
             Lang.Text("Common.Action.Cancel"),
             isWarn: true);
 
         if (result < 3)
         {
             if (ModMain.MyMsgBox(
-                    Lang.Text("Setup.Misc.System.StopUsingPclCe.Message.Final"),
+                    Lang.Text("Setup.Misc.System.StopUsingPclIn.Message.Final"),
                     Lang.Text("Common.Dialog.Warning"),
                     Lang.Text("Common.Action.Continue"),
                     Lang.Text("Common.Action.Cancel"),
@@ -254,7 +254,7 @@ public partial class PageSetupLauncherMisc
 
     private void StopUsingPClCeCore(bool removeMcResources)
     {
-        // 删除 MC 文件夹内的 PCL CE 配置
+        // 删除 MC 文件夹内的 PCL-In 配置
         if (removeMcResources && States.Game.Folders != "")
         {
             foreach (var path in States.Game.Folders.Split('|'))

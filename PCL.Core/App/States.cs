@@ -186,14 +186,14 @@ public static partial class States
         [ConfigItem<string>("CacheSavedPageVersion", "")] public partial string SavedHomepageVersion { get; set; }
 
         /// <summary>
-        /// 窗口高度。
+        /// 窗口高度(默认 = 最小限制高度)。
         /// </summary>
-        [ConfigItem<double>("WindowHeight", 550, ConfigSource.Local)] public partial double WindowHeight { get; set; }
+        [ConfigItem<double>("WindowHeight", 470, ConfigSource.Local)] public partial double WindowHeight { get; set; }
 
         /// <summary>
-        /// 窗口宽度。
+        /// 窗口宽度(默认 = 最小限制宽度)。
         /// </summary>
-        [ConfigItem<double>("WindowWidth", 900, ConfigSource.Local)] public partial double WindowWidth { get; set; }
+        [ConfigItem<double>("WindowWidth", 810, ConfigSource.Local)] public partial double WindowWidth { get; set; }
 
     }
 

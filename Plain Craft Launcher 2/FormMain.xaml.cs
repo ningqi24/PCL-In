@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -48,7 +48,7 @@ public partial class FormMain
                 changelog = Lang.Text("Main.UpdateLog.Empty");
             if (ModMain.MyMsgBoxMarkdown(changelog,
                     Lang.Text("Main.UpdateLog.Title", ModBase.versionBranchName, ModBase.versionBaseName), Lang.Text("Common.Action.Confirm"), Lang.Text("Main.UpdateLog.FullChangelog")) ==
-                2) ModBase.OpenWebsite("https://github.com/PCL-Community/PCL2-CE/releases");
+                2) ModBase.OpenWebsite("https://github.com/ningqi24/PCL-In/releases");
         }, "UpdateLog Output");
     }
 
@@ -72,15 +72,6 @@ public partial class FormMain
         var lastVersion = States.System.LastVersion;
         if (lastVersion < ModBase.versionCode)
         {
-            // 重新询问是否启用遥测数据收集
-            if (lastVersion <= 511)
-            {
-                if (!Config.System.TelemetryConfig.IsDefault() && Config.System.Telemetry)
-                {
-                    Config.System.TelemetryConfig.Reset();
-                    ModBase.Log("[Start] 遥测策略变更：由旧版本升级到含新版遥测的版本，已重置遥测设置");
-                }
-            }
             // 触发升级
             UpgradeSub(lastVersion);
         }
@@ -175,6 +166,12 @@ public partial class FormMain
         if (RandomUtils.NextInt(1, 1000) == 233)
             ShapeTitleLogo.Data = (Geometry)new GeometryConverter().ConvertFromString(
                 "M26,29 v-25 h6 a7,7 180 0 1 0,14 h-6 M83,6.5 a10,11.5 180 1 0 0,18 M48,2.5 v24.5 h13.5");
+        // PCL-In:顶部导航是否仅显示图标
+        var tabIconOnly = Config.Preference.Hide.TabIconOnly;
+        BtnTitleSelect0.ShowText = !tabIconOnly;
+        BtnTitleSelect1.ShowText = !tabIconOnly;
+        BtnTitleSelect2.ShowText = !tabIconOnly;
+        BtnTitleSelect3.ShowText = !tabIconOnly;
         // 加载窗口
 
         ThemeManager.ThemeRefresh();
@@ -242,7 +239,7 @@ public partial class FormMain
                         $"{hint}{"\r\n"}{"\r\n"}{Lang.Text("Main.SpecialVersion.HideHintNotice")}",
                         Lang.Text("Main.SpecialVersion.Title"), Lang.Text("Main.SpecialVersion.IUnderstand"), Lang.Text("Main.SpecialVersion.OpenDownloadPageAndExit"), isWarn: true, button2Action: () =>
                         {
-                            ModBase.OpenWebsite("https://github.com/PCL-Community/PCL2-CE/releases/latest");
+                            ModBase.OpenWebsite("https://github.com/ningqi24/PCL-In/releases/latest");
                             EndProgram(false);
                         });
                 }
@@ -266,14 +263,6 @@ public partial class FormMain
                             }
                     }
 
-                // 遥测提示
-                if (Config.System.TelemetryConfig.IsDefault())
-                {
-                    var selection = ModMain.MyMsgBox(
-                                Lang.Text("Main.Telemetry.Message"),
-                                Lang.Text("Main.Telemetry.Title"), Lang.Text("Common.Action.Agree"), Lang.Text("Common.Action.Decline"));
-                    Config.System.TelemetryConfig.SetValue(selection == 1, forceNewValue: true);
-                }
                 // 启动加载器池
                 try
                 {
@@ -586,7 +575,7 @@ public partial class FormMain
             if (!isLogShown)
             {
                 ModBase.FeedbackInfo();
-                ModBase.Log("请在 https://github.com/PCL-Community/PCL2-CE/issues 提交错误报告，以便于社区解决此问题！（这也有可能是原版 PCL 的问题）");
+                ModBase.Log("请在 https://github.com/ningqi24/PCL-In/issues 提交错误报告，以便于社区解决此问题！（这也有可能是原版 PCL 的问题）");
                 isLogShown = true;
                 ModBase.ShellOnly(LogWrapper.CurrentLogger.CurrentLogFiles.Last());
             }

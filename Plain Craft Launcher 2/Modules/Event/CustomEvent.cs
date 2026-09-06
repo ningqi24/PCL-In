@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using PCL.Core.App;
 using PCL.Core.App.Configuration;
 using PCL.Core.App.Localization;
@@ -94,7 +94,7 @@ namespace PCL
             [EventType.WriteSetting] = _WriteSetting,
             [EventType.ModifyVariable] = _WriteVariable,
             [EventType.WriteVariable] = _WriteVariable,
-            [EventType.OpenHelp] = (_, __) => ModBase.OpenWebsite("https://docs.pclc.cc/ce"),
+            [EventType.OpenHelp] = (_, __) => ModBase.OpenWebsite("https://docs.pcl-in/ce"),
         };
 
         /// <summary>

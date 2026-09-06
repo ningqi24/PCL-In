@@ -16,10 +16,6 @@ public static class Secrets
     /// </summary>
     public static string CurseForgeAPIKey { get; } = EnvironmentInterop.GetSecret("CURSEFORGE_API_KEY", readEnvDebugOnly: true).ReplaceNullOrEmpty();
 
-    /// <summary>
-    /// 遥测密钥
-    /// </summary>
-    public static string TelemetryKey { get; } = EnvironmentInterop.GetSecret("TELEMETRY_KEY", readEnvDebugOnly: true).ReplaceNullOrEmpty();
 
     /// <summary>
     /// Natayark ID OAuth 的 Client ID

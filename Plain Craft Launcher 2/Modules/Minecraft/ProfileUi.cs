@@ -181,11 +181,8 @@ public static class ProfileUi
 
     public static bool CanCreateOtherProfile()
     {
-#if DEBUG || DEBUGCI
+        // PCL-In:始终允许创建其他类型的档案(第三方/Authlib/LittleSkin/离线),不要求先有正版档案
         return true;
-#else
-        return ProfileService.HasMicrosoftProfile || (Lang.IsFeaturesUnrestricted && ProfileService.Profiles.Count > 0) || NetworkHelper.IsNetworkAvailable() is false;
-#endif
     }
 
     public static void CreateProfile()

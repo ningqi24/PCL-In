@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -37,6 +37,37 @@ public partial class MyRadioButton
         {
             if (sender is MyRadioButton rb && rb.LabText is not null) rb.LabText.Text = (string)e.NewValue;
         }));
+
+    /// <summary>
+    /// 是否显示文字。为 false 时仅显示图标(顶部导航标签可用)。
+    /// </summary>
+    public static readonly DependencyProperty ShowTextProperty = DependencyProperty.Register(
+        "ShowText", typeof(bool), typeof(MyRadioButton), new PropertyMetadata(true, (sender, e) =>
+        {
+            if (sender is MyRadioButton rb) rb._ApplyShowText((bool)e.NewValue);
+        }));
+
+    public bool ShowText
+    {
+        get => (bool)GetValue(ShowTextProperty);
+        set => SetValue(ShowTextProperty, value);
+    }
+
+    private void _ApplyShowText(bool show)
+    {
+        if (LabText is null) return;
+        if (show)
+        {
+            LabText.Visibility = Visibility.Visible;
+            LogoHost.Margin = new Thickness(12, 0, 0, 0);
+            LabText.Margin = new Thickness(8, 0, 12, 0);
+        }
+        else
+        {
+            LabText.Visibility = Visibility.Collapsed;
+            LogoHost.Margin = new Thickness(12, 0, 12, 0);
+        }
+    }
 
     private bool _Checked; // 是否选中
     private bool _hasLegacyLogo;

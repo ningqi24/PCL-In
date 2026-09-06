@@ -54,11 +54,6 @@ public sealed class LobbyController
     /// <returns>Created <see cref="ScaffoldingClientEntity"/>.</returns>
     public async Task<ScaffoldingClientEntity?> LaunchClientAsync(string username, string code, CancellationToken ct = default)
     {
-        if (!await _SendTelemetryAsync(false).ConfigureAwait(false))
-        {
-            return null;
-        }
-
         try
         {
             var scfEntity = await ScaffoldingFactory
@@ -146,11 +141,6 @@ public sealed class LobbyController
     /// </remarks>
     public async Task<ScaffoldingServerEntity?> LaunchServerAsync(string username, int port)
     {
-        if (!await _SendTelemetryAsync(true).ConfigureAwait(false))
-        {
-            return null;
-        }
-
         try
         {
             var scfEntity = ScaffoldingFactory.CreateServer(port, username);
@@ -210,97 +200,5 @@ public sealed class LobbyController
             ScfServerEntity = null;
         }
         return 0;
-    }
-
-    private static async Task<bool> _SendTelemetryAsync(bool isHost)
-    {
-        LogWrapper.Info("Link", "开始发送联机数据");
-        var servers = Config.Link.CustomRelayServer;
-        var serverType = Config.Link.ServerType;
-
-        if (Config.Link.ServerType != 2)
-        {
-            servers = (
-                from relay in ETRelay.RelayList
-                where (relay.Type == ETRelayType.Selfhosted && serverType != 2) || (relay.Type == ETRelayType.Community && serverType == 1)
-                select relay
-            ).Aggregate(servers, (current, relay) => current + $"{relay.Url};");
-        }
-
-        JsonObject data = new()
-        {
-            ["Tag"] = "Link",
-            ["Id"] = Identify.LauncherId,
-            ["NaidId"] = NaidProfile.Id,
-            ["NaidEmail"] = NaidProfile.Email,
-            ["NaidLastIp"] = NaidProfile.LastIp,
-            ["CustomName"] = Config.Link.Username,
-            ["Servers"] = servers,
-            ["IsHost"] = isHost
-        };
-        JsonObject sendData = new() { ["data"] = data };
-
-        try
-        {
-            HttpContent httpContent = new StringContent(sendData.ToJsonString(), Encoding.UTF8, "application/json");
-            var key = EnvironmentInterop.GetSecret("TelemetryKey");
-            if (key is null)
-            {
-                if (RequiresLogin)
-                {
-                    LogWrapper.Error("Link", "联机数据发送失败，未设置 TelemetryKey");
-                    return false;
-                }
-                LogWrapper.Warn("Link", "联机数据发送失败，未设置 TelemetryKey，跳过发送");
-            }
-            else
-            {
-                using var response = await HttpRequest
-                    .CreatePost("https://pcl2ce.pysio.online/post")
-                    .WithContent(httpContent)
-                    .WithBearerToken(key)
-                    .SendAsync()
-                    .ConfigureAwait(false);
-
-                if (!response.IsSuccess)
-                {
-                    if (RequiresLogin)
-                    {
-                        LogWrapper.Error("Link", "联机数据发送失败，响应内容为空");
-                        return false;
-                    }
-                    LogWrapper.Warn("Link", "联机数据发送失败，响应内容为空，跳过发送");
-                }
-                else
-                {
-                    var result = await response.AsStringAsync().ConfigureAwait(false);
-                    if (result.Contains("数据已成功保存"))
-                    {
-                        LogWrapper.Info("Link", "联机数据已发送");
-                    }
-                    else
-                    {
-                        if (RequiresLogin)
-                        {
-                            LogWrapper.Error("Link", "联机数据发送失败，响应内容: " + result);
-                            return false;
-                        }
-                        LogWrapper.Warn("Link", "联机数据发送失败，跳过发送，响应内容: " + result);
-                    }
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            if (RequiresLogin)
-            {
-                LogWrapper.Error(ex, "Link",
-                    ex.Message.Contains("429") ? "联机数据发送失败，请求过于频繁" : "联机数据发送失败");
-                return false;
-            }
-            LogWrapper.Warn(ex, "Link", "联机数据发送失败，跳过发送");
-        }
-
-        return true;
     }
 }

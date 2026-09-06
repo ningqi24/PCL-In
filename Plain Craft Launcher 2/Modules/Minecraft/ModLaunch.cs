@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -92,49 +92,10 @@ public static class ModLaunch
         if (!string.IsNullOrEmpty(checkResult))
             throw new ArgumentException(checkResult);
 
+// PCL-In 修改:已移除原版的"启动 N 次后弹赞助窗"逻辑(BETA 编译时常驻块)。
+// 此 fork 不接受/不推荐捐赠,改为空操作。
 #if BETA
-        if (currentLaunchOptions?.SaveBatch is null) // 保存脚本时不提示
-        {
-            ModBase.RunInNewThread(() =>
-            {
-                switch (States.System.LaunchCount)
-                {
-                    case 10:
-                    case 20:
-                    case 40:
-                    case 60:
-                    case 80:
-                    case 100:
-                    case 120:
-                    case 150:
-                    case 200:
-                    case 250:
-                    case 300:
-                    case 350:
-                    case 400:
-                    case 500:
-                    case 600:
-                    case 700:
-                    case 800:
-                    case 900:
-                    case 1000:
-                    case 1200:
-                    case 1400:
-                    case 1600:
-                    case 1800:
-                    case 2000:
-                        if (ModMain.MyMsgBox(
-                                Lang.Text("Minecraft.Launch.Donate.Message", States.System.LaunchCount),
-                                Lang.Text("Minecraft.Launch.Donate.Title", States.System.LaunchCount),
-                                Lang.Text("Minecraft.Launch.Donate.Support"),
-                                Lang.Text("Minecraft.Launch.Donate.Decline")) == 1)
-                        {
-                            ModBase.OpenWebsite("https://afdian.com/a/LTCat");
-                        }
-                        break;
-                }
-            }, "Donate");
-        }
+        // 原本这里是基于 States.System.LaunchCount 的赞助提示弹窗,已删除。
 #endif
         
         #if DEBUG || DEBUGCI
@@ -142,7 +103,11 @@ public static class ModLaunch
         #endif
 
         // 正版购买提示
-        if (!ProfileService.HasMicrosoftProfile)
+        // 语义修正:仅当用户完全没有可用档案(Microsoft / 第三方皮肤站 / 离线)时,
+        // 才走"试玩"流程。原本的 `!HasMicrosoftProfile` 会让所有没有正版档案的用户
+        // (包括使用 Authlib / YggdrasilConnect / Offline 档案的用户)都被强制走试玩,
+        // 这与 PCL 启动器支持第三方登录的设计初衷不符。
+        if (ProfileService.Profiles.Count == 0)
         {
             if (Lang.IsFeaturesUnrestricted)
             {
@@ -1873,7 +1838,7 @@ public static class ModLaunch
         gameArguments.Add("${natives_directory}", ModBase.ShortenPath(GetNativesFolder()));
         gameArguments.Add("${library_directory}", ModBase.ShortenPath(ModFolder.mcFolderSelected + "libraries"));
         gameArguments.Add("${libraries_directory}", ModBase.ShortenPath(ModFolder.mcFolderSelected + "libraries"));
-        gameArguments.Add("${launcher_name}", "PCLCE");
+        gameArguments.Add("${launcher_name}", "PCLIn");
         gameArguments.Add("${launcher_version}", ModBase.versionCode.ToString());
         gameArguments.Add("${version_name}", instance.Name);
         var argumentInfo = Config.Instance.TypeInfo[ModInstanceList.McMcInstanceSelected?.PathInstance];

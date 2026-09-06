@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Input;
@@ -421,7 +421,17 @@ public partial class PageToolsGameLink
 
                 #endregion
 
-                if (jObj is null) throw new Exception("Failed to fetch lobby data");
+                // PCL-In:当没有配置关联的联机公告服务器(如 LINK_SERVER_ROOT 为空)时,
+                // 不再中断联机,而是回退到本地默认值,允许 P2P(EasyTier / 陶瓦)直接联机。
+                jObj ??= new JsonObject
+                {
+                    ["available"] = true,
+                    ["allowCustomName"] = true,
+                    ["requireLogin"] = false,
+                    ["requireRealname"] = false,
+                    ["version"] = LobbyInfoProvider.ProtocolVersion,
+                    ["notices"] = new JsonArray()
+                };
 
                 #region 解析基础状态与版本限制
 

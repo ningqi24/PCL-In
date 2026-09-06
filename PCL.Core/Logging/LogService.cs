@@ -62,8 +62,7 @@ public class LogService : ILifecycleLogService
         string plain,
         Exception? ex)
     {
-        if (ex is not null)
-            TelemetryService.ReportException(ex, plain, level);
+        // PCL-In:已移除遥测上报(TelemetryService 已删除)
 
         // log
 #if !TRACE

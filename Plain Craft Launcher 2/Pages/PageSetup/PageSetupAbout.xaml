@@ -24,6 +24,7 @@
                         <RowDefinition Height="45" />
                         <RowDefinition Height="45" />
                         <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40" />
@@ -91,16 +92,34 @@
                         Grid.Row="1"
                         Grid.Column="2"
                         Height="35"
-                        local:CustomEventService.EventData="https://github.com/PCL-Community"
+                        local:CustomEventService.EventData="https://github.com/PCL-Community/PCL-CE"
                         local:CustomEventService.EventType="OpenUrl"
                         Text="{DynamicResource Setup.About.GitHubHome}" />
                     <local:MyButton
                         Grid.Row="2"
                         Grid.Column="2"
                         Height="35"
-                        local:CustomEventService.EventData="https://github.com/PCL-Community/PCL2-CE"
+                        local:CustomEventService.EventData="https://github.com/ningqi24/PCL-In"
                         local:CustomEventService.EventType="OpenUrl"
                         Text="{DynamicResource Setup.About.SourceCode}" />
+                    <local:MyListItem
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Margin="-5,0,15,0"
+                        Info="PCL-In 的开发者！"
+                        IsHitTestVisible="False"
+                        Title="ningqi24" />
+                    <Image
+                        Grid.Row="3"
+                        Margin="3"
+                        Source="/Plain Craft Launcher 2;component/Images/Heads/ningqi24.png" />
+                    <local:MyButton
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Height="35"
+                        local:CustomEventService.EventData="https://github.com/ningqi24"
+                        local:CustomEventService.EventType="OpenUrl"
+                        Text="{DynamicResource Setup.About.GitHubHome}" />
                 </Grid>
             </local:MyCard>
             <local:MyCard Margin="0,0,0,15" Title="{DynamicResource Setup.About.SpecialThanks.Title}">
@@ -336,7 +355,7 @@
                     <local:MyTextButton
                         Grid.Row="2"
                         HorizontalAlignment="Center"
-                        local:CustomEventService.EventData="https://github.com/PCL-Community/PCL2-CE/graphs/contributors"
+                        local:CustomEventService.EventData="https://github.com/ningqi24/PCL-In/graphs/contributors"
                         local:CustomEventService.EventType="OpenUrl"
                         Text="{DynamicResource Setup.About.Contributors.ViewMore}" />
                 </Grid>
@@ -375,7 +394,7 @@
                         <local:MyButton
                             Margin="0,0,20,0"
                             ColorType="Highlight"
-                            local:CustomEventService.EventData="https://github.com/PCL-Community/PCL2-CE"
+                            local:CustomEventService.EventData="https://github.com/ningqi24/PCL-In"
                             local:CustomEventService.EventType="OpenUrl"
                             Padding="13,0"
                             Text="{DynamicResource Setup.About.Legal.CommunitySource}" />

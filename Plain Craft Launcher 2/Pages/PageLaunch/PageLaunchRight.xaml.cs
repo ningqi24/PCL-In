@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Globalization;
 using System.Reflection;
 using System.Windows;
@@ -49,8 +49,9 @@ public partial class PageLaunchRight : IRefreshable
         var input = ModMain.MyMsgBoxInput(Lang.Text("Launch.Right.CommunityHint.InputTitle"));
         if (string.IsNullOrWhiteSpace(input))
             return;
-        input = new string(input.Where(char.IsAsciiLetter).ToArray()).ToLower();
-        if (input.Contains("pclcommunity"))
+        // PCL-In:去除所有空白后转小写再匹配(保留数字,避免 ningqi24 被误过滤失败)
+        input = new string(input.Where(c => !char.IsWhiteSpace(c)).ToArray()).ToLower();
+        if (input.Contains("ningqi24"))
         {
             ModAnimation.AniDispose(PanHint, true);
             States.Hint.CEMessage = false;
@@ -229,8 +230,8 @@ public partial class PageLaunchRight : IRefreshable
                     break;
                 
                 case 14:
-                    LogWrapper.Info("[Page] 主页预设：PCL CE 公告栏");
-                    url = "https://s3.pysio.online/pcl2-ce/apiv2/pages/announce.xaml";
+                    LogWrapper.Info("[Page] 主页预设：PCL-In 公告栏");
+                    url = "https://raw.githubusercontent.com/ningqi24/PCL-In/dev/assets/announce.xaml";
                     content = LoadFromNetwork(url);
                     break;
                 
@@ -366,6 +367,9 @@ public partial class PageLaunchRight : IRefreshable
                     versionAddress += "?" + address.AfterFirst("?");
             }
 
+            // PCL-In:应用 GitHub 加速代理(ghproxy)
+            versionAddress = GithubProxyHelper.Apply(versionAddress);
+
             // 校验版本
             var version = "";
             var needDownload = true;
@@ -395,7 +399,7 @@ public partial class PageLaunchRight : IRefreshable
             // 实际下载
             if (needDownload)
             {
-                var fileContent = Requester.FetchString(address);
+                var fileContent = Requester.FetchString(GithubProxyHelper.Apply(address));
                 ModBase.Log($"[Page] 已联网下载主页，内容长度：{fileContent.Length}，来源：{address}");
                 States.UI.SavedHomepageUrl = address;
                 States.UI.SavedHomepageVersion = version;

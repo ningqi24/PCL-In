@@ -115,7 +115,7 @@
                                         FontSize="42"
                                         FontWeight="Bold"
                                         Foreground="{DynamicResource ColorBrush1}"
-                                        Text="PCL CE"
+                                        Text="PCL-CE"
                                         TextWrapping="Wrap" />
 
                                     <TextBlock
@@ -177,8 +177,15 @@
                             Text="{DynamicResource Setup.Language.Banner.SubmitPullRequest}"
                             SvgIcon="lucide/git-pull-request-arrow"
                             local:CustomEventService.EventType="OpenUrl"
-                            local:CustomEventService.EventData="https://github.com/PCL-Community/PCL-CE/pulls" />
+                            local:CustomEventService.EventData="https://github.com/ningqi24/PCL-In/pulls" />
                     </StackPanel>
+
+                    <TextBlock
+                        Margin="0,18,0,0"
+                        FontSize="12"
+                        Foreground="{DynamicResource ColorBrush3}"
+                        TextWrapping="Wrap"
+                        Text="注：PCL-In 是独立版本，往后可能无法同步 PCL-CE 的语言系统更新。" />
                 </StackPanel>
             </local:MyCard>
         </StackPanel>

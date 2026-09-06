@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -55,6 +55,7 @@ public partial class PageSetupUI
             ComboDarkColor.SelectedIndex = (int)Config.Preference.Theme.DarkColor;
             ComboLightColor.SelectedIndex = (int)Config.Preference.Theme.LightColor;
             CheckShowLaunchingHint.Checked = Config.Preference.ShowLaunchingHint;
+            CheckTabIconOnly.Checked = Config.Preference.Hide.TabIconOnly;
 
             // 字体设置
             ComboUiFont.SelectedFontTag = Config.Preference.Font;
@@ -213,7 +214,18 @@ public partial class PageSetupUI
     {
         var sender = (MyCheckBox)senderRaw;
         if (ModAnimation.AniControlEnabled == 0)
+        {
             SetByTag(sender.Tag?.ToString(), sender.Checked);
+            // PCL-In:顶部导航仅显示图标,实时应用到四个导航按钮
+            if (sender.Tag?.ToString() == "UiTabIconOnly" && ModMain.frmMain is not null)
+            {
+                var iconOnly = sender.Checked == true;
+                ModMain.frmMain.BtnTitleSelect0.ShowText = !iconOnly;
+                ModMain.frmMain.BtnTitleSelect1.ShowText = !iconOnly;
+                ModMain.frmMain.BtnTitleSelect2.ShowText = !iconOnly;
+                ModMain.frmMain.BtnTitleSelect3.ShowText = !iconOnly;
+            }
+        }
     }
 
     private void TextBoxChange(object senderRaw, RoutedEventArgs e)
@@ -656,7 +668,7 @@ public partial class PageSetupUI
 
     private void BtnCustomTutorial_Click(object sender, MouseButtonEventArgs e)
     {
-        ModBase.OpenWebsite("https://docs.pclc.cc/ce/customization/xaml-format");
+        ModBase.OpenWebsite("https://docs.pcl-in/ce/customization/xaml-format");
     }
 
     // 主题
@@ -667,10 +679,12 @@ public partial class PageSetupUI
         ThemeManager.ThemeRefresh();
     }
 
-    // 赞助
+    // 赞助 — PCL-In 修改:按钮保留但已禁用(空实现)。
+    // 原版会调转到 https://afdian.com/a/LTCat(原作者赞助页),此 fork 移除该跳转。
+    // 保留方法是 XAML `Click="BtnLauncherDonate_Click"` 引用所需。
     private void BtnLauncherDonate_Click(object sender, MouseButtonEventArgs e)
     {
-        ModBase.OpenWebsite("https://afdian.com/a/LTCat");
+        // PCL-In:已禁用
     }
 
     // 滑动条

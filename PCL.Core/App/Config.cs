@@ -23,10 +23,6 @@ public static partial class Config
         /// </summary>
         [ConfigItem<bool>("SystemDisableHardwareAcceleration", false)] public partial bool DisableHardwareAcceleration { get; set; }
 
-        /// <summary>
-        /// 遥测。
-        /// </summary>
-        [ConfigItem<bool>("SystemTelemetry", false)] public partial bool Telemetry { get; set; }
 
         /// <summary>
         /// 实时日志最大行数。
@@ -56,6 +52,16 @@ public static partial class Config
             [ConfigItem<string>("SystemHttpProxyCustomUsername", "")] public partial string CustomUsername { get; set; }
             [ConfigItem<string>("SystemHttpProxyCustomPassword", "")] public partial string CustomPassword { get; set; }
         }
+
+        /// <summary>
+        /// 是否使用 GitHub 加速代理(ghproxy)访问 GitHub 相关资源。
+        /// </summary>
+        [ConfigItem<bool>("SystemGithubProxy", false)] public partial bool GithubProxy { get; set; }
+
+        /// <summary>
+        /// 是否已询问过 GitHub 加速代理。
+        /// </summary>
+        [ConfigItem<bool>("SystemGithubProxyAsked", false)] public partial bool GithubProxyAsked { get; set; }
     }
 
     /// <summary>
@@ -77,7 +83,7 @@ public static partial class Config
     {
         [ConfigItem<int>("ToolDownloadThread", 63)] public partial int ThreadLimit { get; set; }
         [ConfigItem<int>("ToolDownloadSpeed", 42)] public partial int SpeedLimit { get; set; }
-        [ConfigItem<int>("ToolDownloadSource", 1)] public partial int FileSource { get; set; }
+        [ConfigItem<int>("ToolDownloadSource", 0)] public partial int FileSource { get; set; } // 默认尽量使用镜像源
         [ConfigItem<int>("ToolDownloadVersion", 1)] public partial int VersionListSource { get; set; }
         [ConfigItem<bool>("ToolDownloadAutoSelectVersion", true)] public partial bool AutoSelectInstance { get; set; }
         [ConfigItem<bool>("ToolFixAuthlib", true)] public partial bool FixAuthLib { get; set; }
@@ -105,7 +111,7 @@ public static partial class Config
     {
         [ConfigItem<bool>("ToolHelpChinese", true)] public partial bool AutoChangeLanguage { get; set; }
         // [ConfigItem<int>("ToolUpdateAlpha", 0, ConfigSource.SharedEncrypt)] public partial int Alpha { get; set; }
-        [ConfigItem<bool>("ToolUpdateRelease", false)] public partial bool ReleaseNotification { get; set; }
+        [ConfigItem<bool>("ToolUpdateRelease", true)] public partial bool ReleaseNotification { get; set; } // 默认开启正式版更新提示
         [ConfigItem<bool>("ToolUpdateSnapshot", false)] public partial bool SnapshotNotification { get; set; }
     }
 
@@ -124,10 +130,6 @@ public static partial class Config
         /// </summary>
         [ConfigItem<UpdateChannel>("SystemUpdateChannel", UpdateChannel.Release, ConfigSource.Local)] public partial UpdateChannel UpdateChannel { get; set; }
             
-        /// <summary>
-        /// Mirror 酱 CDK。
-        /// </summary>
-        [ConfigItem<string>("SystemMirrorChyanKey", "", ConfigSource.SharedEncrypt)] public partial string MirrorChyanKey { get; set; }
     }
 
     /// <summary>
@@ -373,7 +375,7 @@ public static partial class Config
             /// <summary>
             /// 主页来源类型。
             /// </summary>
-            [ConfigItem<int>("UiCustomType", 0, ConfigSource.Local)] public partial int Type { get; set; }
+            [ConfigItem<int>("UiCustomType", 3, ConfigSource.Local)] public partial int Type { get; set; } // 默认预设主页(你知道吗)
 
             /// <summary>
             /// 预设选项。
@@ -428,6 +430,9 @@ public static partial class Config
         [ConfigGroup("Hide")]
         partial class HideConfigGroup
         {
+            // 顶部导航仅显示图标(不显示文字)
+            [ConfigItem<bool>("UiTabIconOnly", true, ConfigSource.Local)] public partial bool TabIconOnly { get; set; }
+
             // 主页面
             [ConfigItem<bool>("UiHiddenPageDownload", false, ConfigSource.Local)] public partial bool PageDownload { get; set; }
             [ConfigItem<bool>("UiHiddenPageSetup", false, ConfigSource.Local)] public partial bool PageSetup { get; set; }
@@ -556,7 +561,7 @@ public static partial class Config
         /// <summary>
         /// 自定义左下角版本信息。
         /// </summary>
-        [ConfigItem<string>("LaunchArgumentInfo", "PCLCE", ConfigSource.Local)] public partial string TypeInfo { get; set; }
+        [ConfigItem<string>("LaunchArgumentInfo", "PCLIn", ConfigSource.Local)] public partial string TypeInfo { get; set; }
 
         /// <summary>
         /// 选择的默认 Java 实例。

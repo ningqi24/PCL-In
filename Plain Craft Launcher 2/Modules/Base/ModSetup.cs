@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
@@ -423,7 +423,7 @@ public class ModSetup
                     Lang.Text("Setup.Ui.Homepage.NetUpdate.Hint");
                 CustomEventService.SetEventType(ModMain.frmSetupUI.HintCustom, EventType.OpenUrl);
                 CustomEventService.SetEventData(ModMain.frmSetupUI.HintCustom,
-                    "https://github.com/PCL-Community/PCL-CE/discussions");
+                    "https://github.com/ningqi24/PCL-In/discussions");
                 break;
             }
             case 3: // 预设

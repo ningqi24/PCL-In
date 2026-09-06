@@ -1,10 +1,12 @@
 {
-  "name": "Plain Craft Launcher Community Edition",
+  "name": "PCL-In",
+  "displayName": "PCL-In (PCL2 In版)",
+  "description": "基于 PCL Community Edition (PCL CE) 的二次 fork",
   "version": {
-    "base": "2.15.1",
-    "upstream": "2.12.1",
+    "base": "1.0.0",
+    "upstream": "2.15.1",
     "suffix": "beta.1",
-    "code": 523
+    "code": 1000
   },
   "licenses": [
     {
@@ -102,12 +104,6 @@
       "info": "Copyright © protobuf-net\nLicensed under the Apache-2.0 license.",
       "website": "https://github.com/protobuf-net/protobuf-net",
       "license": "https://github.com/protobuf-net/protobuf-net/blob/main/Licence.txt"
-    },
-    {
-      "name": "Sentry",
-      "info": "Copyright © 2018 Sentry\nLicensed under the MIT license.",
-      "website": "https://sentry.io/",
-      "license": "https://github.com/getsentry/sentry-dotnet/blob/main/LICENSE"
     },
     {
       "name": "LWJGL Unsafe Agent",

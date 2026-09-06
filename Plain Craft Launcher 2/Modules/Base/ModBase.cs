@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -110,10 +110,10 @@ public static class ModBase
     public static string pathAppdata = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PCL") + @"\";
 
     /// <summary>
-    ///     AppData 中的 PCLCE 配置文件夹路径，以 \ 结尾。
+    ///     AppData 中的 PCLIn 配置文件夹路径，以 \ 结尾。
     /// </summary>
     public static string pathAppdataConfig = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
-                                             (versionBranchName == "Debug" ? @"\.pclcedebug\" : @"\.pclce\");
+                                             (versionBranchName == "Debug" ? @"\.pclindebug\" : @"\.pclin\");
 
 
     #endregion
@@ -3560,7 +3560,7 @@ public static class ModBase
                                  Lang.Text("Common.Action.OpenFolder"),
                                  Lang.Text("Setup.Feedback.Reminder.NotNeeded")) ==
                              1)) OpenExplorer(exePath + @"PCL\Log\");
-        OpenWebsite("https://github.com/PCL-Community/PCL2-CE/issues/");
+        OpenWebsite("https://github.com/ningqi24/PCL-In/issues/");
     }
 
     public static bool CanFeedback(bool showHint)

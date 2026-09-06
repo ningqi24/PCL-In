@@ -24,12 +24,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationIcon>Images\icon.ico</ApplicationIcon>
-        <AssemblyTitle>Plain Craft Launcher Community Edition</AssemblyTitle>
-        <Description>Minecraft 启动器 (作者: 龙腾猫跃; 经社区二次开发版本)</Description>
-        <Product>Plain Craft Launcher Community Edition</Product>
-        <Copyright>Copyright © 龙腾猫跃 2016. All Rights Reserved.</Copyright>
-        <AssemblyVersion>2.15.1.0</AssemblyVersion>
-        <FileVersion>2.15.1.0</FileVersion>
+        <AssemblyTitle>PCL-In (PCL2 In版)</AssemblyTitle>
+        <Description>Minecraft 启动器 — 基于 PCL-In Edition (PCL-In) 的二次 fork</Description>
+        <Product>PCL-In</Product>
+        <Copyright>Copyright © 龙腾猫跃 2016. All Rights Reserved. PCL-In 是基于 PCL-In Edition 的二次 fork,保留原版所有权利归属。</Copyright>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
         <NoWarn>
             41999;42016;42017;42018;42019;42020;42021;42022;42032;42036;42314;
             VSTHRD002;VSTHRD003;VSTHRD110;VSTHRD200

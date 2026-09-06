@@ -1,73 +1,31 @@
-[简体中文](README.md) | [English](README-EN.md) | **繁體中文**
+# PCL-In
 
-<div align="center">
+> 基於 **PCL Community Edition (PCL CE)** 的二次 fork。
 
-<img src="Plain Craft Launcher 2/Images/icon.ico" alt="Logo" width="80" height="80">
+PCL-In 是一個為非正版使用者(尤其是第三方皮膚站使用者)提供更好體驗的 Minecraft 啟動器。
 
-# PCL Community Edition
+## 與上游 PCL CE 的差異
 
-[![Stars](https://img.shields.io/github/stars/PCL-Community/PCL-CE?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTggLjI1YS43NS43NSAwIDAgMSAuNjczLjQxOGwxLjg4MiAzLjgxNSA0LjIxLjYxMmEuNzUuNzUgMCAwIDEgLjQxNiAxLjI3OWwtMy4wNDYgMi45Ny43MTkgNC4xOTJhLjc1MS43NTEgMCAwIDEtMS4wODguNzkxTDggMTIuMzQ3bC0zLjc2NiAxLjk4YS43NS43NSAwIDAgMS0xLjA4OC0uNzlsLjcyLTQuMTk0TC44MTggNi4zNzRhLjc1Ljc1IDAgMCAxIC40MTYtMS4yOGw0LjIxLS42MTFMNy4zMjcuNjY4QS43NS43NSAwIDAgMSA4IC4yNVoiIGZpbGw9IiNlYWM1NGYiLz48L3N2Zz4=&logoSize=auto&label=stars&labelColor=444444&color=eac54f)](https://github.com/PCL-Community/PCL-CE/)
-![GitHub Release](https://img.shields.io/github/v/release/PCL-Community/PCL-CE?label=release&logo=github&style=for-the-badge)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/PCL-Community/PCL-CE/build-test.yml?style=for-the-badge)
+- **去除強制正版驗證**:使用第三方皮膚站(Authlib / YggdrasilConnect)或離線檔案的使用者,不再被強制進入「試玩模式」。
+- **去除所有贊助提示**:不彈出開助助窗,不引導使用者訪問原作者的愛發電。
+- **更新機制獨立**:透過 GitHub Releases API 偵測本倉庫的新版本,不會覆蓋你的 fork 改動。
 
-[![Issues](https://img.shields.io/github/issues/PCL-Community/PCL-CE?style=for-the-badge&label=issues&labelColor=444444&color=1F883D&logo=github)](https://github.com/PCL-Community/PCL-CE/issues)
-[![Pull requests](https://img.shields.io/github/issues-pr/PCL-Community/PCL-CE?style=for-the-badge&label=pull%20requests&labelColor=444444&color=1F883D&logo=github)](https://github.com/PCL-Community/PCL-CE/pulls)
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/PCL-Community/PCL-CE/total?style=for-the-badge)
-[![嗶哩嗶哩](https://img.shields.io/badge/貼文-bilibili-00A4DB?style=for-the-badge&labelColor=444444&logo=bilibili)](https://space.bilibili.com/3546847192811755/dynamic) <br />
+## 下載
 
-<a href="https://trendshift.io/repositories/21800?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-21800" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/21800/daily?language=C%23" alt="PCL-Community%2FPCL-CE | Trendshift" width="250" height="55"/></a>
-<a href="https://trendshift.io/repositories/21800" target="_blank"><img src="https://trendshift.io/api/badge/repositories/21800" alt="PCL-Community%2FPCL-CE | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+前往 [Releases](https://github.com/ningqi24/PCL-In/releases) 頁面下載最新版本。
 
-[社群版下載](https://github.com/PCL-Community/PCL-CE/releases/latest) |
-[上游儲存庫](https://github.com/Meloong-Git/PCL)
+## 系統需求
 
-[提交問題](https://github.com/PCL-Community/PCL-CE/issues/new/choose) |
-[貢獻指南](https://github.com/PCL-Community/PCL-CE/wiki/开发指南)
+- Windows 10 1809 (17763) 或更高
+- [.NET 10 Desktop Runtime](https://get.dot.net/10)
 
-</div>
+## 致謝
 
-PCL CE 是基於 PCL 開放原始碼二次開發的社群版本，包括了主線暫未製作的功能和改進！
+本專案基於 [PCL Community Edition (PCL CE)](https://github.com/PCL-Community/PCL-CE) 開發,所有權利歸原作者 [龍騰貓躍](https://github.com/Meloong-Git/PCL) 及 [成都瓜皮龍科技有限公司](https://www.pclc.cc/) 所有。
 
-社群版的版本號與主線並非嚴格對應關係，也請不要向官方儲存庫回饋社群版問題。
+上游第三方元件的版權資訊詳見 [`Plain Craft Launcher 2/metadata.json`](./Plain%20Craft%20Launcher%202/metadata.json) 的 `licenses[]` 陣列。
 
-歡迎大家來用用看！
+## 授權
 
-**開發群:** [599620549](https://qm.qq.com/q/PNQA4Md8wc) | **使用者 1 群:** [1028074835](https://qm.qq.com/q/qrMGJo8BQQ) | **使用者 2 群:** [1070029541](https://qm.qq.com/q/lBywbDMWhG)
-
-## 💻 支援平台
-
-| 作業系統 | 支援情況 | 環境要求 |
-|---|---|---|
-| Windows 10 1809 (17763) 或更高 | ✅ 完整支援 | [.NET 10 Desktop Runtime](https://get.dot.net/10) |
-| Windows 8 - Windows 10 1809 (17763) | ⚠️ 理論能跑，酌情提供社群支援 | [.NET 10 Desktop Runtime](https://get.dot.net/10) |
-| Windows 7 或更低版本 | ❌ 不支援 | / |
-| macOS / Linux / 其他作業系統 | ⚠️ 僅跨平台開發支援（交叉編譯）| [.NET 10 SDK](https://get.dot.net/10) |
-
-**✅ 完整支援**：盡可能提供一切相關支援，但必須確保啟動器為最新版本。
-
-**⚠️ 理論能跑，酌情提供社群支援**：PCL CE 應該可以在這些平台上執行，但不保證功能完全可用。你可能需要升級到完整支援的系統版本以獲得進一步社群技術支援。
-
-**❌ 不支援**：PCL CE 在這些平台的可用性較低，甚至根本打不開。請升級作業系統以使用 PCL CE。
-
-**⚠️ 僅跨平台開發支援（交叉編譯）**：PCL CE 的原始碼可以在 macOS 與 Linux 平台編譯，但無法直接執行。作為開發者，你可以在這些平台上進行開發，然後將編譯產物轉移到 Windows 系統測試。
-
-**注**：
-社群僅對最新版本的啟動器提供支援。
-取決於部分問題的特殊性（如系統不完整），有時你仍然必須升級作業系統以繼續獲得支援。
-PCL CE 始終建議使用最新版本的作業系統以獲得最佳體驗。
-你仍然可以嘗試在不受支援的系統上使用 PCL CE，但可能會遇到很多額外問題。
-
-## 🔒 授權條款
-
-- `Plain Craft Launcher 2/` 使用 [自訂授權條款](https://github.com/PCL-Community/PCL-CE/blob/dev/Plain%20Craft%20Launcher%202/LICENCE)
-- `其餘所有目錄` 使用 [Apache License 2.0](https://github.com/PCL-Community/PCL-CE/blob/dev/LICENSE)
-
-## 🌟 統計資料
-![Alt](https://repobeats.axiom.co/api/embed/3e46296e6e3a134991a783480fd2f62723bb0353.svg "Repobeats analytics image")
-
-[![Star History Chart](https://api.star-history.com/svg?repos=PCL-Community/PCL-CE&type=Date)](https://www.star-history.com/#PCL-Community/PCL-CE&Date)
-
-**此頁瀏覽量**（總計 / 今日）：[![Hits](https://hits.zkitefly.eu.org/?tag=https://github.com/PCL-Community/PCL-CE)](https://hits.zkitefly.eu.org/?tag=https://github.com/PCL-Community/PCL-CE&web=true)
-## ❤️ 貢獻者
-
-[![](https://contrib.rocks/image?repo=PCL-Community/PCL-CE)](https://github.com/PCL-Community/PCL-CE/graphs/contributors)
+- 根目錄 [`LICENSE`](./LICENSE) 遵循 Apache License 2.0
+- [`Plain Craft Launcher 2/LICENCE`](./Plain%20Craft%20Launcher%202/LICENCE) 遵循上游《PCL 分發有限許可》

@@ -55,8 +55,8 @@ public class ETPlayerInfo
 
 public static class ETInfoProvider
 {
-    public const string ETNetworkNamePrefix = "PCLCELobby";
-    public const string ETNetworkSecretPrefix = "PCLCEETLOBBY2025";
+    public const string ETNetworkNamePrefix = "PCLInLobby";
+    public const string ETNetworkSecretPrefix = "PCLInETLOBBY2025";
     public const string ETVersion = Scaffolding.EasyTier.EasyTierMetadata.CurrentEasyTierVer;
     public static readonly string ETPath = Path.Combine(Paths.SharedLocalData, "EasyTier", ETVersion,
         "easytier-windows-" + (RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "arm64" : "x86_64"));
