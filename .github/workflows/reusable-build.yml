@@ -52,5 +52,5 @@ jobs:
       - name: Upload the Build Artifact
         uses: actions/upload-artifact@v7
         with:
-          name: PCL-In-${{ inputs.architecture }}
+          name: PCL-In-${{ inputs.architecture == 'ARM64' && 'arm64' || 'x64' }}
           path: artifact/**
