@@ -346,3 +346,5 @@ MaskFiles/
 # macOS
 
 **/.DS_Store
+# PCL-In:本地 GPG 密钥目录(含私钥,切勿提交)
+.gpg/
