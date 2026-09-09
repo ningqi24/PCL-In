@@ -47,8 +47,8 @@ public partial class PageLoginProfile
         {
             foreach (var p in ProfileService.Profiles)
                 ProfileCollection.Add(new ProfileItem(p));
-            // PCL-In:显示"微软登录暂不可用"提示
-            HintMicrosoft.Visibility = Visibility.Visible;
+            // PCL-In:移除"需要先进行一次正版验证"提示
+            HintMicrosoft.Visibility = Visibility.Collapsed;
             ModBase.Log("[Profile] 档案列表刷新完成");
         }
         catch (Exception ex)

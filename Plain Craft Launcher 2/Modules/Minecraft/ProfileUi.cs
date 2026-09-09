@@ -198,8 +198,8 @@ public static class ProfileUi
         ProfileService.IsCreatingProfile = true;
         var type = selected.Value switch
         {
-            // PCL-In:已隐藏微软登录,0=第三方(Auth), 1=离线(Legacy)
-            0 => ModLaunch.McLoginType.Auth,
+            0 => ModLaunch.McLoginType.Ms,
+            1 => ModLaunch.McLoginType.Auth,
             _ => ModLaunch.McLoginType.Legacy
         };
         if (type == ModLaunch.McLoginType.Auth)
@@ -221,11 +221,11 @@ public static class ProfileUi
 
     private static List<IMyRadio> _GetAvailableProfileSelection(bool includeOthers) => includeOthers
         ? [
-            // PCL-In:隐藏微软正版登录(因缺少 CLIENT_ID,技术原因暂不可用)
+            new MyListItem { Title = Lang.Text("Launch.Account.Type.Microsoft"), Type = MyListItem.CheckType.RadioBox, SvgIcon = "lucide/shield-check" },
             new MyListItem { Title = Lang.Text("Launch.Account.Type.ThirdParty"), Type = MyListItem.CheckType.RadioBox, SvgIcon = "lucide/network" },
             new MyListItem { Title = Lang.Text("Launch.Account.Type.Offline"), Type = MyListItem.CheckType.RadioBox, SvgIcon = "lucide/link-2-off" }
         ]
-        : [new MyListItem { Title = Lang.Text("Launch.Account.Type.Offline"), Type = MyListItem.CheckType.RadioBox, SvgIcon = "lucide/link-2-off" }];
+        : [new MyListItem { Title = Lang.Text("Launch.Account.Type.Microsoft"), Type = MyListItem.CheckType.RadioBox, SvgIcon = "lucide/shield-check" }];
 
     public static void EditProfileId()
     {
