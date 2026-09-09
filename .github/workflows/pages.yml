@@ -12,6 +12,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
 concurrency:
   group: pages
@@ -24,13 +25,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Delete stale github-pages artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          ids=$(gh api "repos/${GH_REPO}/actions/artifacts?per_page=100" --paginate --jq '.artifacts[] | select(.name == "github-pages") | .id' || true)
+          for id in $ids; do
+            echo "Deleting stale github-pages artifact: $id"
+            gh api -X DELETE "repos/${GH_REPO}/actions/artifacts/${id}" >/dev/null 2>&1 || true
+          done
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact (download/)
         uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages
           path: download
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
+      - name: Clean up old github-pages artifacts
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          ids=$(gh api "repos/${GH_REPO}/actions/artifacts?per_page=100" --paginate --jq '.artifacts[] | select(.name == "github-pages") | .id' || true)
+          # Keep only the most recent one (the one we just deployed).
+          first=1
+          for id in $ids; do
+            if [ "$first" = "1" ]; then first=0; continue; fi
+            echo "Pruning older github-pages artifact: $id"
+            gh api -X DELETE "repos/${GH_REPO}/actions/artifacts/${id}" >/dev/null 2>&1 || true
+          done
