@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PCL-In 下载 | 低调的 Minecraft 启动器</title>
   <meta name="description" content="PCL-In 是基于 PCL Community Edition 的二次 fork，支持微软正版（OAuth 设备码流）、第三方皮肤站与离线验证。免费开源，Windows x64 / ARM64。" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2 2 7l10 5 10-5-10-5Z'/%3E%3Cpath d='m2 17 10 5 10-5'/%3E%3Cpath d='m2 12 10 5 10-5'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2 2 7l10 5 10-5-10-5Z'/%3E%3Cpath d='m2 17 10 5 10-5'/%3E%3Cpath d='m2 12 10 5 10-5'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -20,7 +20,7 @@
         <a href="#features">功能</a>
         <a href="#checksum">校验</a>
         <a href="#faq">FAQ</a>
-        <a class="nav-gh" href="https://github.com/ningqi24/PCL-In" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="nav-gh" href="https://github.com/ningqi24/PCL-In" target="_blank" rel="noopener">GitHub &nearr;</a>
       </div>
     </nav>
   </header>
@@ -31,7 +31,7 @@
         <span class="hero-badge">基于 PCL Community Edition 的二次 fork</span>
         <h1 class="hero-title">PCL<span class="accent">-In</span></h1>
         <p class="hero-sub">低调、轻量、纯净的 Minecraft 启动器。支持微软正版登录、第三方皮肤站与离线验证，完全免费。</p>
-        <div class="hero-cta" id="hero-cta">
+        <div class="hero-cta">
           <a class="btn btn-primary btn-lg" id="dl-hero-x64" href="https://github.com/ningqi24/PCL-In/releases/download/v1.0.0/PCL-In-x64.exe" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
             下载 Windows x64
@@ -43,8 +43,8 @@
         <div class="hero-meta">
           <span class="version-pill" id="hero-version">v1.0.0</span>
           <span id="hero-updated" title="发布时间">2026-09-06</span>
-          <span class="dot">·</span>
-          <a href="https://github.com/ningqi24/PCL-In" target="_blank" rel="noopener">开源 · GPL-3.0</a>
+          <span class="dot">&middot;</span>
+          <a href="https://github.com/ningqi24/PCL-In" target="_blank" rel="noopener">开源 &middot; GPL-3.0</a>
         </div>
       </div>
     </section>
@@ -56,19 +56,27 @@
           <p class="section-sub">选择你的系统架构，下载最新正式版。核对 SHA256 与 GPG 签名以确保文件完整。</p>
         </div>
 
-        <div class="card release-card">
+        <!-- ============ 模式切换 ============ -->
+        <div class="mode-toggle" id="mode-toggle" role="tablist" aria-label="下载模式">
+          <button class="mode-btn active" type="button" role="tab" data-mode="normal" aria-selected="true">普通模式</button>
+          <button class="mode-btn" type="button" role="tab" data-mode="friendly" aria-selected="false">友好模式</button>
+        </div>
+        <p class="mode-hint" id="mode-hint">普通模式：直接列出全部下载文件。友好模式：按引导一步步选择，自动匹配适合你设备的文件。</p>
+
+        <!-- ============ 普通模式 ============ -->
+        <div class="card release-card" id="view-normal">
           <div class="release-top">
             <div class="release-title">
               <span class="tag">最新发布</span>
               <strong id="release-name">PCL-In v1.0.0</strong>
             </div>
-            <a class="release-link" id="release-link" href="https://github.com/ningqi24/PCL-In/releases/tag/v1.0.0" target="_blank" rel="noopener">查看 GitHub Release ↗</a>
+            <a class="release-link" id="release-link" href="https://github.com/ningqi24/PCL-In/releases/tag/v1.0.0" target="_blank" rel="noopener">查看 GitHub Release &nearr;</a>
           </div>
 
           <div class="dl-grid">
             <article class="dl-card" data-arch="x64">
               <div class="dl-card-head">
-                <span class="dl-arch">Windows · x64</span>
+                <span class="dl-arch">Windows &middot; x64</span>
                 <span class="dl-size" id="size-x64">17.79 MB</span>
               </div>
               <p class="dl-desc">适用于大多数 Intel / AMD 电脑（64 位）。</p>
@@ -77,14 +85,14 @@
               </a>
               <p class="dl-alt">
                 <a id="sig-x64" href="https://github.com/ningqi24/PCL-In/releases/download/v1.0.0/PCL-In-x64.exe.asc" target="_blank" rel="noopener">GPG 签名</a>
-                <span>·</span>
-                <button class="linkbtn" data-copy="917e3c9fba8a044e1c50226c62ea299b13d8dfa22dc5e418eb6a90e85e2bc7c1">复制 SHA256</button>
+                <span>&middot;</span>
+                <button class="linkbtn" type="button" data-copy="917e3c9fba8a044e1c50226c62ea299b13d8dfa22dc5e418eb6a90e85e2bc7c1">复制 SHA256</button>
               </p>
             </article>
 
             <article class="dl-card" data-arch="arm64">
               <div class="dl-card-head">
-                <span class="dl-arch">Windows · ARM64</span>
+                <span class="dl-arch">Windows &middot; ARM64</span>
                 <span class="dl-size" id="size-arm64">17.56 MB</span>
               </div>
               <p class="dl-desc">适用于骁龙 / Windows 平板等 ARM 电脑。</p>
@@ -93,13 +101,39 @@
               </a>
               <p class="dl-alt">
                 <a id="sig-arm64" href="https://github.com/ningqi24/PCL-In/releases/download/v1.0.0/PCL-In-arm64.exe.asc" target="_blank" rel="noopener">GPG 签名</a>
-                <span>·</span>
-                <button class="linkbtn" data-copy="ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944">复制 SHA256</button>
+                <span>&middot;</span>
+                <button class="linkbtn" type="button" data-copy="ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944">复制 SHA256</button>
               </p>
             </article>
           </div>
 
           <p class="release-note">页面加载时会从 GitHub Releases 自动拉取最新版本信息；若无法联网，则显示内置的 v1.0.0。需要源码或旧版本请前往 <a href="https://github.com/ningqi24/PCL-In/releases" target="_blank" rel="noopener">Releases</a>。</p>
+        </div>
+
+        <!-- ============ 友好模式 ============ -->
+        <div id="view-friendly" hidden>
+          <div class="platform-grid" id="platform-grid">
+            <button class="platform-card" type="button" data-arch="x64">
+              <span class="platform-badge" data-badge hidden></span>
+              <span class="platform-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+              </span>
+              <span class="platform-card-name">Windows &middot; x64</span>
+              <span class="platform-card-desc">Intel / AMD 处理器（64 位）</span>
+              <span class="platform-card-btn">选择下载</span>
+            </button>
+
+            <button class="platform-card" type="button" data-arch="arm64">
+              <span class="platform-badge" data-badge hidden></span>
+              <span class="platform-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>
+              </span>
+              <span class="platform-card-name">Windows &middot; ARM64</span>
+              <span class="platform-card-desc">骁龙等 ARM 处理器 / 平板</span>
+              <span class="platform-card-btn">选择下载</span>
+            </button>
+          </div>
+          <p class="platform-tip">不确定选哪个？绝大多数电脑请选 <strong>x64</strong>；骁龙平板 / 便携本等 ARM 设备请选 <strong>ARM64</strong>。</p>
         </div>
       </div>
     </section>
@@ -173,7 +207,7 @@ ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944</code></pre>
           </details>
           <details class="faq-item">
             <summary>我该下载 x64 还是 ARM64？</summary>
-            <p>绝大多数 Intel / AMD 台式机、笔记本选择 <strong>x64</strong>；搭载骁龙、三星等 ARM 芯片的 Windows 平板 / 便携本选择 <strong>ARM64</strong>。不确定时选 x64。</p>
+            <p>绝大多数 Intel / AMD 台式机、笔记本选择 <strong>x64</strong>；搭载骁龙、三星等 ARM 芯片的 Windows 平板 / 便携本选择 <strong>ARM64</strong>。不确定时选 x64，也可以直接使用上方的<strong>友好模式</strong>让它自动匹配。</p>
           </details>
           <details class="faq-item">
             <summary>如何反馈问题或提交建议？</summary>
@@ -190,7 +224,7 @@ ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944</code></pre>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>PCL-In · 基于 <a href="https://github.com/PCL-Community/PCL-CE" target="_blank" rel="noopener">PCL Community Edition</a> 二次开发</p>
+      <p>PCL-In &middot; 基于 <a href="https://github.com/PCL-Community/PCL-CE" target="_blank" rel="noopener">PCL Community Edition</a> 二次开发</p>
       <p class="footer-links">
         <a href="https://github.com/ningqi24/PCL-In" target="_blank" rel="noopener">GitHub 仓库</a>
         <a href="https://github.com/ningqi24/PCL-In/releases" target="_blank" rel="noopener">Release</a>
@@ -199,6 +233,73 @@ ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944</code></pre>
       <p class="footer-muted">本站点与 Mojang / Microsoft 无任何关联。Minecraft 及相关名称归 Mojang AB 所有。</p>
     </div>
   </footer>
+
+  <!-- ============ 友好模式 配置对话框 ============ -->
+  <div class="fm-overlay" id="friendly-modal">
+    <div class="fm-box" role="dialog" aria-modal="true" aria-labelledby="fm-title">
+      <button class="fm-close" type="button" id="fm-close" aria-label="关闭">&times;</button>
+      <div class="fm-header">
+        <div class="fm-icon" id="fm-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        </div>
+        <div>
+          <div class="fm-title" id="fm-title">Windows</div>
+          <div class="fm-sub" id="fm-sub">按步骤选择版本与配置，自动匹配下载文件</div>
+        </div>
+      </div>
+
+      <div class="fm-loading" id="fm-loading">
+        <span class="fm-spinner"></span><span>正在获取版本列表...</span>
+      </div>
+
+      <div id="fm-content" hidden>
+        <div class="fm-section">
+          <div class="fm-label">版本</div>
+          <div class="fm-version-select">
+            <button class="fm-version-btn" type="button" id="fm-version-btn">加载中...</button>
+            <div class="fm-version-dropdown" id="fm-version-dropdown" hidden></div>
+          </div>
+        </div>
+
+        <div class="fm-section" id="fm-arch-section">
+          <div class="fm-label">处理器架构</div>
+          <div class="fm-step-row" id="fm-arch-btns"></div>
+        </div>
+
+        <div class="fm-section" id="fm-pkg-section">
+          <div class="fm-label">安装包类型</div>
+          <div class="fm-step-row" id="fm-pkg-btns"></div>
+        </div>
+
+        <div class="fm-section" id="fm-result-section">
+          <div class="fm-label">匹配文件</div>
+          <div class="fm-btn-list" id="fm-btn-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SHA256 校验弹窗 ============ -->
+  <div class="modal-overlay" id="sha-modal">
+    <div class="modal-box">
+      <div class="modal-title">
+        <span>SHA256 文件校验</span>
+        <button class="modal-close" type="button" id="sha-close" aria-label="关闭">&times;</button>
+      </div>
+      <div class="modal-section-label">文件名</div>
+      <div class="modal-hash-row"><div class="modal-hash" id="sha-modal-name"></div></div>
+      <div class="modal-section-label">SHA256 哈希值</div>
+      <div class="modal-hash-row">
+        <div class="modal-hash mono" id="sha-modal-hash"></div>
+        <button class="modal-copy-btn" type="button" data-copy-target="sha-modal-hash">复制</button>
+      </div>
+      <div class="modal-section-label">终端校验命令</div>
+      <div class="modal-cmd-row">
+        <code class="modal-cmd" id="sha-modal-cmd"></code>
+        <button class="modal-copy-btn" type="button" data-copy-target="sha-modal-cmd">复制</button>
+      </div>
+    </div>
+  </div>
 
   <script src="assets/js/app.js"></script>
 </body>
