@@ -388,9 +388,10 @@
     applyNormal(staticRelease());
     await detectDevice();
 
-    let saved = "normal";
-    try { saved = localStorage.getItem(STORE_KEY) || "normal"; } catch (e) {}
-    switchMode(saved === "friendly" ? "friendly" : "normal");
+    // 默认进入友好模式（用户若曾手动切到普通模式则尊重其选择）
+    let saved = null;
+    try { saved = localStorage.getItem(STORE_KEY); } catch (e) {}
+    switchMode(saved === "normal" ? "normal" : "friendly");
 
     const rels = await fetchReleases();
     if (rels.length) {
