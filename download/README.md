@@ -1,6 +1,7 @@
 # PCL-In 下载站
 
-这是 **PCL-In** 的官方下载站，部署于 <https://pclin.astras.cc>。
+**PCL-In** 是基于 PCL Community Edition (PCL CE) 的二次 fork，面向非正版玩家（尤其第三方皮肤站用户），
+去除强制正版验证、去除赞助提示、具备独立更新机制。本站是其官方下载站，部署于 <https://pclin.astras.cc>。
 
 ## 目录说明
 

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PCL-In 下载 | 低调的 Minecraft 启动器</title>
-  <meta name="description" content="PCL-In 是基于 PCL Community Edition 的二次 fork，支持微软正版（OAuth 设备码流）、第三方皮肤站与离线验证。免费开源，Windows x64 / ARM64。" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2 2 7l10 5 10-5-10-5Z'/%3E%3Cpath d='m2 17 10 5 10-5'/%3E%3Cpath d='m2 12 10 5 10-5'/%3E%3C/svg%3E" />
+  <title>PCL-In 下载 | 为非正版玩家打造的 Minecraft 启动器</title>
+  <meta name="description" content="PCL-In 是基于 PCL Community Edition (PCL CE) 的二次 fork，为非正版玩家（尤其是第三方皮肤站用户）提供更好体验：去除强制正版验证、去除赞助提示、独立更新。Windows 10 1809+ / .NET 10。" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2366ccff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2 2 7l10 5 10-5-10-5Z'/%3E%3Cpath d='m2 17 10 5 10-5'/%3E%3Cpath d='m2 12 10 5 10-5'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -17,8 +17,9 @@
       </a>
       <div class="nav-links">
         <a href="#download">下载</a>
+        <a href="#why">特点</a>
         <a href="#features">功能</a>
-        <a href="#checksum">校验</a>
+        <a href="#requirements">系统要求</a>
         <a href="#faq">FAQ</a>
         <a class="nav-gh" href="https://github.com/ningqi24/PCL-In" target="_blank" rel="noopener">GitHub &nearr;</a>
       </div>
@@ -28,9 +29,9 @@
   <main id="top">
     <section class="hero">
       <div class="container hero-inner">
-        <span class="hero-badge">基于 PCL Community Edition 的二次 fork</span>
+        <span class="hero-badge">基于 PCL Community Edition (PCL CE) 的二次 fork</span>
         <h1 class="hero-title">PCL<span class="accent">-In</span></h1>
-        <p class="hero-sub">低调、轻量、纯净的 Minecraft 启动器。支持微软正版登录、第三方皮肤站与离线验证，完全免费。</p>
+        <p class="hero-sub">为非正版玩家（尤其是第三方皮肤站用户）打造的 Minecraft 启动器。去除强制正版验证——使用第三方皮肤站或离线档案时，不再被强制进入「试玩模式」。</p>
         <div class="hero-cta">
           <a class="btn btn-primary btn-lg" id="dl-hero-x64" href="https://github.com/ningqi24/PCL-In/releases/download/v1.0.0/PCL-In-x64.exe" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
@@ -44,7 +45,7 @@
           <span class="version-pill" id="hero-version">v1.0.0</span>
           <span id="hero-updated" title="发布时间">2026-09-06</span>
           <span class="dot">&middot;</span>
-          <a href="https://github.com/ningqi24/PCL-In" target="_blank" rel="noopener">开源 &middot; GPL-3.0</a>
+          <span>Windows 10 1809+ &middot; .NET 10</span>
         </div>
       </div>
     </section>
@@ -56,14 +57,12 @@
           <p class="section-sub">选择你的系统架构，下载最新正式版。核对 SHA256 与 GPG 签名以确保文件完整。</p>
         </div>
 
-        <!-- ============ 模式切换 ============ -->
         <div class="mode-toggle" id="mode-toggle" role="tablist" aria-label="下载模式">
           <button class="mode-btn active" type="button" role="tab" data-mode="normal" aria-selected="true">普通模式</button>
           <button class="mode-btn" type="button" role="tab" data-mode="friendly" aria-selected="false">友好模式</button>
         </div>
         <p class="mode-hint" id="mode-hint">普通模式：直接列出全部下载文件。友好模式：按引导一步步选择，自动匹配适合你设备的文件。</p>
 
-        <!-- ============ 普通模式 ============ -->
         <div class="card release-card" id="view-normal">
           <div class="release-top">
             <div class="release-title">
@@ -107,10 +106,9 @@
             </article>
           </div>
 
-          <p class="release-note">页面加载时会从 GitHub Releases 自动拉取最新版本信息；若无法联网，则显示内置的 v1.0.0。需要源码或旧版本请前往 <a href="https://github.com/ningqi24/PCL-In/releases" target="_blank" rel="noopener">Releases</a>。</p>
+          <p class="release-note">需要 <strong>.NET 10 Desktop Runtime</strong>（<a href="https://get.dot.net/10" target="_blank" rel="noopener">下载</a>），系统要求 Windows 10 1809 (17763) 或更高。页面加载时会从 GitHub Releases 自动拉取最新版本；若无法联网则显示内置的 v1.0.0，源码与旧版本见 <a href="https://github.com/ningqi24/PCL-In/releases" target="_blank" rel="noopener">Releases</a>。</p>
         </div>
 
-        <!-- ============ 友好模式 ============ -->
         <div id="view-friendly" hidden>
           <div class="platform-grid" id="platform-grid">
             <button class="platform-card" type="button" data-arch="x64">
@@ -138,84 +136,114 @@
       </div>
     </section>
 
-    <section class="section section-alt" id="features">
+    <section class="section section-alt" id="why">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">功能特性</h2>
-          <p class="section-sub">在 PCL Community Edition 基础上二次开发，专注纯净体验与易用性。</p>
+          <h2 class="section-title">为什么是 PCL-In</h2>
+          <p class="section-sub">相比上游 PCL Community Edition (PCL CE) 的主要改动。</p>
         </div>
         <div class="feature-grid">
           <article class="feature-card">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-            <h3>微软正版登录</h3>
-            <p>使用 OAuth 设备码流，无需填写任何应用密钥即可完成正版验证，登录更安全、更省心。</p>
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div>
+            <h3>去除强制正版验证</h3>
+            <p>使用第三方皮肤站（Authlib / Yggdrasil Connect）或离线档案的玩家，不再被强制进入「试玩模式」，可直接正常游戏。</p>
           </article>
+          <article class="feature-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></div>
+            <h3>去除所有赞助提示</h3>
+            <p>不弹出赞助窗口，也不引导用户访问原作者的爱发电，界面更干净。</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></div>
+            <h3>独立更新机制</h3>
+            <p>通过 GitHub Releases API 检测本仓库的新版本，不会覆盖你的 fork 改动。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">功能特性</h2>
+          <p class="section-sub">完整继承 PCL CE 的启动器能力，并针对非正版玩家优化验证方式。</p>
+        </div>
+        <div class="feature-grid">
           <article class="feature-card">
             <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
             <h3>第三方皮肤站</h3>
-            <p>支持 Authlib 与 Yggdrasil Connect，可接入第三方验证服务器与皮肤站。</p>
+            <p>支持 Authlib 与 Yggdrasil Connect，可接入第三方验证服务器与皮肤站，正版玩家亦可正常使用。</p>
           </article>
           <article class="feature-card">
             <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="8" x2="16" y1="12" y2="12"/></svg></div>
             <h3>离线验证</h3>
-            <p>无需联网，内建离线账号，适合局域网、单机或快速测试。</p>
+            <p>内建离线账号，无需联网即可登录，适合局域网、单机或快速测试。</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
-            <h3>快速、轻量</h3>
-            <p>基于 .NET 构建，纯原生性能，安装包小、启动快、资源占用低。</p>
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+            <h3>微软正版登录</h3>
+            <p>使用 OAuth 设备码流完成正版验证，无需填写应用密钥，在浏览器中授权即可。</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H4z"/><path d="M2 20h20"/><path d="M9 8h6"/></svg></div>
+            <h3>完整的启动器能力</h3>
+            <p>继承 PCL CE 的版本下载与安装、整合包、资源与 Mod 管理、多实例等完整功能。</p>
           </article>
           <article class="feature-card">
             <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg></div>
             <h3>多语言</h3>
-            <p>提供简体中文、繁体中文与英文界面，一键切换。</p>
+            <p>提供简体中文、繁体中文与英文界面，可随时切换。</p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h3>完全开源</h3>
-            <p>代码公开托管在 GitHub，遵循开源许可，可自由检查与二次开发。</p>
+            <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+            <h3>开源</h3>
+            <p>代码公开托管于 GitHub，根目录遵循 Apache-2.0，可自由查看与二次开发。</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="checksum">
+    <section class="section section-alt" id="requirements">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">文件完整性校验</h2>
-          <p class="section-sub">下载后请核对 SHA256 校验值，确保文件未被篡改。</p>
+          <h2 class="section-title">系统要求</h2>
+          <p class="section-sub">运行 PCL-In 前请确认你的环境满足以下条件。</p>
         </div>
         <div class="card code-card">
-          <pre><code id="code-x64">PCL-In-x64.exe
-917e3c9fba8a044e1c50226c62ea299b13d8dfa22dc5e418eb6a90e85e2bc7c1</code></pre>
-          <pre><code id="code-arm64">PCL-In-arm64.exe
-ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944</code></pre>
-          <p class="section-sub">在终端运行 <code>certutil -hashfile 文件.exe SHA256</code> 或 <code>sha256sum 文件.exe</code> 即可核对。</p>
+          <ul class="req-list">
+            <li><strong>操作系统</strong>：Windows 10 1809（build 17763）或更高版本</li>
+            <li><strong>运行环境</strong>：<a href="https://get.dot.net/10" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a></li>
+            <li><strong>处理器架构</strong>：x64（Intel / AMD）或 ARM64</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="faq">
+    <section class="section" id="faq">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">常见问题</h2>
         </div>
         <div class="faq-list">
           <details class="faq-item">
-            <summary>正版登录为什么不需要填写应用密钥？</summary>
-            <p>微软正版登录采用 <strong>OAuth 设备码流</strong>（RFC 8628）。该流程属于公开客户端（public client），只需一个公开的 <code>client_id</code>，无需也不应使用客户端密钥，因此你只需要在弹出的浏览器里授权即可，启动器本身不保存任何密钥。</p>
+            <summary>PCL-In 和 PCL2 / PCL CE 是什么关系？</summary>
+            <p>PCL-In 是基于 <a href="https://github.com/PCL-Community/PCL-CE" target="_blank" rel="noopener">PCL Community Edition (PCL CE)</a> 的二次 fork，由 PCL-In 独立开发与维护。上游 PCL CE 又源自 <a href="https://github.com/Meloong-Git/PCL" target="_blank" rel="noopener">PCL2</a>。</p>
           </details>
           <details class="faq-item">
-            <summary>我该下载 x64 还是 ARM64？</summary>
-            <p>绝大多数 Intel / AMD 台式机、笔记本选择 <strong>x64</strong>；搭载骁龙、三星等 ARM 芯片的 Windows 平板 / 便携本选择 <strong>ARM64</strong>。不确定时选 x64，也可以直接使用上方的<strong>友好模式</strong>让它自动匹配。</p>
+            <summary>用第三方皮肤站或离线档案会被强制「试玩模式」吗？</summary>
+            <p><strong>不会</strong>。这是 PCL-In 相对上游最核心的改动：使用第三方皮肤站（Authlib / Yggdrasil Connect）或离线档案时，不再被强制进入试玩模式。</p>
+          </details>
+          <details class="faq-item">
+            <summary>正版登录需要填写应用密钥吗？</summary>
+            <p>不需要。微软正版登录采用 <strong>OAuth 设备码流</strong>（RFC 8628），属于公开客户端，只需一个公开的 <code>client_id</code>，在浏览器中授权即可，启动器不保存任何密钥。</p>
+          </details>
+          <details class="faq-item">
+            <summary>运行时提示缺少 .NET 怎么办？</summary>
+            <p>请安装 <a href="https://get.dot.net/10" target="_blank" rel="noopener">.NET 10 Desktop Runtime</a>（不是 ASP.NET Core 或仅 .NET Runtime）。系统需为 Windows 10 1809 (17763) 或更高。</p>
           </details>
           <details class="faq-item">
             <summary>如何反馈问题或提交建议？</summary>
             <p>请前往 <a href="https://github.com/ningqi24/PCL-In/issues" target="_blank" rel="noopener">GitHub Issues</a> 提交，附上启动器日志与复现步骤会更快得到处理。</p>
-          </details>
-          <details class="faq-item">
-            <summary>PCL-In 与 PCL2 是什么关系？</summary>
-            <p>PCL-In 是基于 <a href="https://github.com/PCL-Community/PCL-CE" target="_blank" rel="noopener">PCL Community Edition (PCL-CE)</a> 的二次 fork，并进一步独立开发与维护。</p>
           </details>
         </div>
       </div>
@@ -224,17 +252,17 @@ ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944</code></pre>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>PCL-In &middot; 基于 <a href="https://github.com/PCL-Community/PCL-CE" target="_blank" rel="noopener">PCL Community Edition</a> 二次开发</p>
+      <p>PCL-In &middot; 基于 <a href="https://github.com/PCL-Community/PCL-CE" target="_blank" rel="noopener">PCL Community Edition (PCL CE)</a> 的二次 fork</p>
       <p class="footer-links">
         <a href="https://github.com/ningqi24/PCL-In" target="_blank" rel="noopener">GitHub 仓库</a>
         <a href="https://github.com/ningqi24/PCL-In/releases" target="_blank" rel="noopener">Release</a>
         <a href="https://github.com/ningqi24/PCL-In/issues" target="_blank" rel="noopener">问题反馈</a>
       </p>
-      <p class="footer-muted">本站点与 Mojang / Microsoft 无任何关联。Minecraft 及相关名称归 Mojang AB 所有。</p>
+      <p>所有权利归属原作者 <a href="https://github.com/Meloong-Git/PCL" target="_blank" rel="noopener">龙腾猫跃</a> 及 <a href="https://www.pclc.cc/" target="_blank" rel="noopener">成都瓜皮龙科技有限公司</a>。</p>
+      <p class="footer-muted">许可证：根目录 Apache-2.0 &middot; Plain Craft Launcher 2 遵循上游《PCL 分发有限许可》。本镜像站与 Mojang / Microsoft 无任何关联，Minecraft 及相关名称归 Mojang AB 所有。</p>
     </div>
   </footer>
 
-  <!-- ============ 友好模式 配置对话框 ============ -->
   <div class="fm-overlay" id="friendly-modal">
     <div class="fm-box" role="dialog" aria-modal="true" aria-labelledby="fm-title">
       <button class="fm-close" type="button" id="fm-close" aria-label="关闭">&times;</button>
@@ -279,7 +307,6 @@ ba3ea7acb07865670a3bf3cafc94a172abb34107f0a8ebdf641d436f4c54f944</code></pre>
     </div>
   </div>
 
-  <!-- ============ SHA256 校验弹窗 ============ -->
   <div class="modal-overlay" id="sha-modal">
     <div class="modal-box">
       <div class="modal-title">
