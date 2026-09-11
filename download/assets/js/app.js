@@ -72,7 +72,6 @@
       if (!a) return;
       if (a.size) { const s = $("size-" + arch); if (s) s.textContent = mb(a.size); }
       const dl = $("dl-" + arch); if (dl) dl.setAttribute("href", a.url);
-      const hero = $("dl-hero-" + arch); if (hero) hero.setAttribute("href", a.url);
       const sig = $("sig-" + arch); if (sig) sig.setAttribute("href", a.url + ".asc");
       const sha = a.sha256 || "";
       if (sha) {

@@ -38,6 +38,12 @@
 （读取 `https://api.github.com/repos/ningqi24/PCL-In/releases`，友好模式的版本下拉框会列出最近 20 个版本）。
 当无法联网或接口不可用时，页面会回退到内置的当前版本信息，因此地址始终可用。
 
+## 友链
+
+首屏次按钮、下载板块下方与页脚均放置了 [PCL-N](https://pcln.top/) 的友情宣传：
+PCL-N 是另一款社区维护的现代 Minecraft 启动器，支持 Windows / macOS / Linux。
+PCL-In 只发布 Windows 版本，其他平台可以在站点上直接跳转过去。
+
 ## 部署方式（二选一）
 
 ### 1. GitHub Pages（推荐）
