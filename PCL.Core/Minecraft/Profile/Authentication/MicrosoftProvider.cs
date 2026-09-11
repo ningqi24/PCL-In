@@ -20,8 +20,14 @@ namespace PCL.Core.Minecraft.Profile.Authentication;
 /// </summary>
 public sealed class MicrosoftProvider : IAuthenticateProvider
 {
-    private const string DeviceEndpoint = "https://login.microsoftonline.com/consumers/oauth2/v2.0/devicecode";
-    private const string TokenEndpoint = "https://login.microsoftonline.com/consumers/oauth2/v2.0/token";
+    // Secrets.MSOAuthClientId 指向微软自己的旧版 MSA 应用（00000000402b5328），这类应用只注册在
+    // login.live.com：送到 login.microsoftonline.com（Entra）会直接得到 AADSTS700016
+    //「Application ... was not found in the directory」，连设备码都拿不到。因此这里走 live.com 的
+    // MSA 端点，scope 也必须用 MSA 形式（service::...::MBI_SSL）而不是 Entra 的 XboxLive.signin。
+    // 若将来改用自己注册的 Entra 应用（PCL_MS_CLIENT_ID），端点与 scope 需要一并换回。
+    private const string DeviceEndpoint = "https://login.live.com/oauth20_connect.srf";
+    private const string TokenEndpoint = "https://login.live.com/oauth20_token.srf";
+    private const string Scope = "service::user.auth.xboxlive.com::MBI_SSL";
 
     private readonly string _clientId;
 
@@ -38,7 +44,8 @@ public sealed class MicrosoftProvider : IAuthenticateProvider
             .WithContent(new FormUrlEncodedContent(new Dictionary<string, string>
             {
                 ["client_id"] = _clientId,
-                ["scope"] = "XboxLive.signin offline_access"
+                ["scope"] = Scope,
+                ["response_type"] = "device_code"
             }))
             .SendAsync(NetworkService.GetClient(NetworkService.MicrosoftEntraId), cancellationToken: token)
             .ConfigureAwait(false);
@@ -107,7 +114,7 @@ public sealed class MicrosoftProvider : IAuthenticateProvider
                 ["client_id"] = _clientId,
                 ["grant_type"] = "refresh_token",
                 ["refresh_token"] = refreshToken,
-                ["scope"] = "XboxLive.signin offline_access"
+                ["scope"] = Scope
             }))
             .SendAsync(NetworkService.GetClient(NetworkService.MicrosoftEntraId), cancellationToken: token)
             .ConfigureAwait(false);

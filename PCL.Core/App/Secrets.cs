@@ -7,7 +7,11 @@ namespace PCL.Core.App;
 public static class Secrets
 {
     /// <summary>
-    /// 微软 OAuth 的 Client ID
+    /// 微软 OAuth 的 Client ID。<br/>
+    /// 兜底值 00000000402b5328 是微软自家的 Minecraft MSA 应用，只注册在 login.live.com，
+    /// 因此 MicrosoftProvider 走的是 live.com 的 MSA 设备码流程。<br/>
+    /// 若要改用自己注册的 Entra 应用（构建时传入 PCL_MS_CLIENT_ID），端点与 scope 需一并换回
+    /// login.microsoftonline.com + XboxLive.signin。
     /// </summary>
     public static string MSOAuthClientId { get; } = EnvironmentInterop.GetSecret("MS_CLIENT_ID", readEnvDebugOnly: true).ReplaceNullOrEmpty("00000000402b5328");
 
