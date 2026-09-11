@@ -12,7 +12,7 @@ PCL-In is a Minecraft launcher fork tailored for non-premium users (especially t
 
 ## Download
 
-Visit the [Releases](https://github.com/PCL-In/PCL-In/releases) page.
+Visit the [Releases](https://github.com/PCL-In/desktop/releases) page.
 
 ## System Requirements
 

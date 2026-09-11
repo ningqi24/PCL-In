@@ -12,7 +12,7 @@ PCL-In 是一个为非正版用户(尤其是第三方皮肤站用户)提供更�
 
 ## 下载
 
-前往 [Releases](https://github.com/PCL-In/PCL-In/releases) 页面下载最新版本。
+前往 [Releases](https://github.com/PCL-In/desktop/releases) 页面下载最新版本。
 
 ## 系统要求
 

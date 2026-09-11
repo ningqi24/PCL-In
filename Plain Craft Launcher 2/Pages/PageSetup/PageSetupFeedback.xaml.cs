@@ -60,7 +60,7 @@ public partial class PageSetupFeedback
     public void FeedbackListGet(ModLoader.LoaderTask<bool, List<Feedback>> task)
     {
         var list = Requester.FetchJson(
-            "https://api.github.com/repos/PCL-In/PCL-In/issues?state=all&sort=created&per_page=200",
+            "https://api.github.com/repos/PCL-In/desktop/issues?state=all&sort=created&per_page=200",
             new RequestParam
             {
                 Retries = 3,

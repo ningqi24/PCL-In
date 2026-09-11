@@ -118,7 +118,7 @@
                         Grid.Row="3"
                         Grid.Column="2"
                         Height="35"
-                        local:CustomEventService.EventData="https://github.com/PCL-In/PCL-In"
+                        local:CustomEventService.EventData="https://github.com/PCL-In/desktop"
                         local:CustomEventService.EventType="OpenUrl"
                         Text="{DynamicResource Setup.About.SourceCode}" />
                     <local:MyListItem
@@ -374,7 +374,7 @@
                     <local:MyTextButton
                         Grid.Row="2"
                         HorizontalAlignment="Center"
-                        local:CustomEventService.EventData="https://github.com/PCL-In/PCL-In/graphs/contributors"
+                        local:CustomEventService.EventData="https://github.com/PCL-In/desktop/graphs/contributors"
                         local:CustomEventService.EventType="OpenUrl"
                         Text="{DynamicResource Setup.About.Contributors.ViewMore}" />
                 </Grid>
@@ -413,7 +413,7 @@
                         <local:MyButton
                             Margin="0,0,20,0"
                             ColorType="Highlight"
-                            local:CustomEventService.EventData="https://github.com/PCL-In/PCL-In"
+                            local:CustomEventService.EventData="https://github.com/PCL-In/desktop"
                             local:CustomEventService.EventType="OpenUrl"
                             Padding="13,0"
                             Text="{DynamicResource Setup.About.Legal.CommunitySource}" />

@@ -12,7 +12,7 @@ PCL-In 是一個為非正版使用者(尤其是第三方皮膚站使用者)提�
 
 ## 下載
 
-前往 [Releases](https://github.com/PCL-In/PCL-In/releases) 頁面下載最新版本。
+前往 [Releases](https://github.com/PCL-In/desktop/releases) 頁面下載最新版本。
 
 ## 系統需求
 

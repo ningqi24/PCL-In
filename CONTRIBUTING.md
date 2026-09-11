@@ -21,7 +21,7 @@
 1. Fork 此倉庫到你的 GitHub 賬號
 2. 從 `dev` 建立新分支
 4.  提交更改並推送
-5. 在 GitHub 上開啟 PR,目標分支為 `PCL-In/PCL-In:dev`
+5. 在 GitHub 上開啟 PR,目標分支為 `PCL-In/desktop:dev`
 
 ## 重要提醒
 

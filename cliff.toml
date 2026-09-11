@@ -28,7 +28,7 @@ body = """
 
 ---
 
-[GPG 签名公钥](https://github.com/PCL-In/PCL-In/blob/dev/GPG-PUBLIC-KEY.asc)
+[GPG 签名公钥](https://github.com/PCL-In/desktop/blob/dev/GPG-PUBLIC-KEY.asc)
 公钥指纹 `3342DFCABCD733C07D110742AB3DB0F9B7C20C1C`
 
 """

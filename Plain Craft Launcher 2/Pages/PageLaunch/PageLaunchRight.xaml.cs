@@ -231,7 +231,7 @@ public partial class PageLaunchRight : IRefreshable
                 
                 case 14:
                     LogWrapper.Info("[Page] 主页预设：PCL-In 公告栏");
-                    url = "https://raw.githubusercontent.com/PCL-In/PCL-In/dev/assets/announce.xaml";
+                    url = "https://raw.githubusercontent.com/PCL-In/desktop/dev/assets/announce.xaml";
                     content = LoadFromNetwork(url);
                     break;
                 

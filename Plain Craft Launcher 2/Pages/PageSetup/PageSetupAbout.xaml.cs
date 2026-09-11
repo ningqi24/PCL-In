@@ -53,7 +53,7 @@ public partial class PageSetupAbout
         try
         {
             using (var response = await HttpRequest
-                       .Create("https://api.github.com/repos/PCL-In/PCL-In/contributors").SendAsync())
+                       .Create("https://api.github.com/repos/PCL-In/desktop/contributors").SendAsync())
             {
                 response.EnsureSuccessStatusCode();
                 var cos = await response.AsJsonAsync<List<GitHubContributor>>(JsonCompat.SerializerOptions);
