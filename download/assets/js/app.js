@@ -305,7 +305,7 @@
   function showFriendlyError(msg) {
     const loading = $("fm-loading"), content = $("fm-content");
     loading.hidden = false;
-    loading.innerHTML = '<span style="color:#dc2626">' + msg + "</span>";
+    loading.innerHTML = '<span style="color:var(--danger)">' + msg + "</span>";
     content.hidden = true;
   }
 
@@ -350,6 +350,16 @@
     // 复制按钮
     document.querySelectorAll("[data-copy]").forEach(bindCopy);
     document.querySelectorAll("[data-copy-target]").forEach(bindCopy);
+
+    // 主题切换：默认跟随系统（在 <head> 内联脚本里已确定），点击后写入 localStorage
+    var themeBtn = $("theme-toggle");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", function () {
+        var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        try { localStorage.setItem("pclinTheme", next); } catch (e) {}
+      });
+    }
 
     // 模式切换
     document.querySelectorAll(".mode-btn").forEach(function (b) {

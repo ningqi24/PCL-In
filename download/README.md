@@ -5,16 +5,26 @@
 
 ## 目录说明
 
-- `index.html` — 主页面（下载 / 功能 / 校验 / FAQ）
+- `index.html` — 主页面（版本面板 / 下载 / 与上游差异 / 功能 / 系统要求 / FAQ）
 - `assets/css/style.css` — 样式
 - `assets/js/app.js` — 从 GitHub Releases 自动拉取版本信息、校验值与引导逻辑
 - `CNAME` — 自定义域名 `pclin.astras.cc`
 - `.nojekyll` — 禁用 Jekyll 处理，避免特定目录/文件名被干扰
 
+## 界面与主题
+
+站点采用 **Soft UI（新拟态）** 风格：用柔和的凸起 / 凹陷阴影表达层级，配色克制
+（主色 `#4f6ef7`），不使用渐变文字、发光装饰与 emoji。图标全部取自
+[Lucide](https://lucide.dev)（ISC 许可），以**内联 SVG sprite** 形式写在 `index.html` 里，
+运行时不请求任何外部资源。
+
+提供 **明亮 / 暗色** 两套主题：默认跟随系统 `prefers-color-scheme`，点击右上角按钮可手动切换，
+选择记录在 `localStorage` 的 `pclinTheme`（在 `<head>` 的内联脚本里应用，避免首屏闪烁）。
+
 ## 两种下载模式
 
-站点采用与 `download.astras` 下载站一致的**深色主题**（`#111` 背景 / `#eee` 文字 / `#66ccff` 强调色），
-并提供**普通模式**与**友好模式**；**默认进入友好模式**，切换状态记录在 `localStorage`。
+页面提供**普通模式**与**友好模式**；**默认进入友好模式**，切换状态记录在
+`localStorage` 的 `pclinDownloadMode`。
 
 - **普通模式**：直接列出全部下载文件（x64 / ARM64 两个按钮 + GPG 签名 + SHA256）。
 - **友好模式**：先选择设备类型（Windows x64 / ARM64）卡片，再在弹出的配置对话框中
