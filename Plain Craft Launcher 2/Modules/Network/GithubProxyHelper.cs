@@ -1,7 +1,8 @@
 // GithubProxyHelper.cs
 // PCL-In:为 GitHub 相关 URL 提供 ghproxy 加速代理支持。
-// 当 Config.Network.GithubProxy 开启时,把 github.com / api.github.com / raw.githubusercontent.com
-// 等 URL 加上 ghproxy 前缀,以改善国内访问 GitHub 资源的速度。
+// 当 Config.Network.GithubProxy 开启时,把 github.com / raw.githubusercontent.com 等 URL 加上
+// ghproxy 前缀,以改善国内访问 GitHub 资源的速度。
+// 注意:api.github.com 例外——ghproxy 不转发 GitHub API,加了前缀只会失败,详见 IsGithubUrl。
 
 using System;
 using PCL.Core.App;
