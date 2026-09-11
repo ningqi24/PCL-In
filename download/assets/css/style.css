@@ -77,6 +77,9 @@
 /* ---------- 基础 ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
+/* 作者样式里的 display 会盖掉 UA 的 [hidden]，这里统一兜底 */
+[hidden] { display: none !important; }
+
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); }
 
 body {
