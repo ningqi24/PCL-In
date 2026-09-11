@@ -34,6 +34,8 @@ public class GitHubReleasesUpdateSource : IUpdateSource
     private const string GithubApiBase = "https://api.github.com";
     private static readonly HttpClient _http = new()
     {
+        // 默认 100 秒；网络不通时没必要让更新检查卡这么久
+        Timeout = TimeSpan.FromSeconds(30),
         DefaultRequestHeaders =
         {
             { "User-Agent", "PCL-In-Updater" },
@@ -93,7 +95,14 @@ public class GitHubReleasesUpdateSource : IUpdateSource
             catch (Exception ex)
             {
                 ModBase.Log(ex, $"[Update] GitHub Releases API 获取失败");
-                return new VersionDataModel { VersionName = ModBase.versionBaseName, VersionCode = ModBase.versionCode };
+                // Changelog 必须给空串：UpdateStart 会把它写进临时文件，null 会在那里抛异常，
+                // 最后变成一个和真实原因无关的「获取启动器更新失败，请检查网络连接」。
+                return new VersionDataModel
+                {
+                    VersionName = ModBase.versionBaseName,
+                    VersionCode = ModBase.versionCode,
+                    Changelog = string.Empty
+                };
             }
         }
 
@@ -212,9 +221,12 @@ public class GitHubReleasesUpdateSource : IUpdateSource
 
         // PCL-In:应用 GitHub 加速代理(ghproxy)并首次询问
         GithubProxyHelper.EnsureAsked();
+        // 注意：api.github.com 不会被 GithubProxyHelper 加前缀（ghproxy 不支持代理 GitHub API），
+        // 所以这里始终是直连，走加速的只有发布资源的下载链接。
         var requestUrl = GithubProxyHelper.Apply($"{GithubApiBase}/{url}");
         using var resp = await _http.GetAsync(requestUrl);
-        resp.EnsureSuccessStatusCode();
+        if (!resp.IsSuccessStatusCode)
+            throw new Exception($"GitHub Releases API 返回 {(int)resp.StatusCode} {resp.ReasonPhrase}：{requestUrl}");
         var json = await resp.Content.ReadAsStringAsync();
 
         JsonNode? node;

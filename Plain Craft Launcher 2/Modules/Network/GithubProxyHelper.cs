@@ -18,9 +18,12 @@ public static class GithubProxyHelper
     {
         if (string.IsNullOrWhiteSpace(url)) return false;
         var u = url.ToLowerInvariant();
+        // api.github.com 绝不能走 ghproxy：该类代理只转发仓库页面与发布资源，不转发 GitHub API。
+        // 实测 https://ghproxy.net/https://api.github.com/repos/.../releases/latest 会一直卡到超时，
+        // .../releases?per_page=20 则直接返回 403 Invalid input——结果是更新与公告双双获取失败。
+        if (u.Contains("api.github.com")) return false;
         return u.Contains("github.com") ||
                u.Contains("raw.githubusercontent.com") ||
-               u.Contains("api.github.com") ||
                u.Contains("raw.gitcode.com") ||
                u.Contains("gitee.com");
     }
@@ -44,7 +47,7 @@ public static class GithubProxyHelper
         try
         {
             var choice = ModMain.MyMsgBox(
-                "检测到启动器需要访问 GitHub 资源(如更新、公告、主页预设)。\n是否使用 GitHub 加速代理(ghproxy.net)来提升访问速度?\n\n如果网络访问 GitHub 正常,可以选择\"不使用\"。",
+                "检测到启动器需要访问 GitHub 资源(如更新下载、公告页面、主页预设)。\n是否使用 GitHub 加速代理(ghproxy.net)来提升访问速度?\n\n注意:更新检测走的是 GitHub API,该代理不支持转发 API,始终直连。\n如果网络访问 GitHub 正常,可以选择\"不使用\"。",
                 "GitHub 加速代理",
                 "使用加速",
                 "不使用",
