@@ -49,9 +49,9 @@ public partial class PageLaunchRight : IRefreshable
         var input = ModMain.MyMsgBoxInput(Lang.Text("Launch.Right.CommunityHint.InputTitle"));
         if (string.IsNullOrWhiteSpace(input))
             return;
-        // PCL-In:去除所有空白后转小写再匹配(保留数字,避免 ningqi24 被误过滤失败)
+        // PCL-In:去除所有空白后转小写再匹配(带与不带连字符都接受:PCL-In / PCLIn / PCL In)
         input = new string(input.Where(c => !char.IsWhiteSpace(c)).ToArray()).ToLower();
-        if (input.Contains("ningqi24"))
+        if (input.Contains("pcl-in") || input.Contains("pclin"))
         {
             ModAnimation.AniDispose(PanHint, true);
             States.Hint.CEMessage = false;
@@ -231,7 +231,7 @@ public partial class PageLaunchRight : IRefreshable
                 
                 case 14:
                     LogWrapper.Info("[Page] 主页预设：PCL-In 公告栏");
-                    url = "https://raw.githubusercontent.com/ningqi24/PCL-In/dev/assets/announce.xaml";
+                    url = "https://raw.githubusercontent.com/PCL-In/PCL-In/dev/assets/announce.xaml";
                     content = LoadFromNetwork(url);
                     break;
                 

@@ -12,11 +12,11 @@ public static class UpdateManager
 {
     public static bool isUpdateWaitingRestart;
 
-    // PCL-In 修改:使用 GitHubReleasesUpdateSource 检测 ningqi24/PCL-In 仓库的 release。
+    // PCL-In 修改:使用 GitHubReleasesUpdateSource 检测 PCL-In/PCL-In 仓库的 release。
     // 检测流程:GitHub Releases API -> 解析 tag_name -> 找匹配架构的 asset -> 下载更新。
     public static UpdatesWrapperModel remoteServer = new(new List<IUpdateSource>
     {
-        new GitHubReleasesUpdateSource("ningqi24", "PCL-In", "PCL-In")
+        new GitHubReleasesUpdateSource("PCL-In", "PCL-In", "PCL-In")
     });
 
     public static bool IsCurrentVersionBeta

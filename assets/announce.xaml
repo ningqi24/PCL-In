@@ -8,7 +8,7 @@
                    Text="支持离线验证、第三方皮肤站登录与正版(Microsoft)验证，欢迎使用！" />
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
             <local:MyButton MinWidth="160" Height="35" Padding="13,0" Margin="0,4,20,8" ColorType="Highlight"
-                        Text="前往 GitHub 仓库" EventType="打开网页" EventData="https://github.com/ningqi24/PCL-In" />
+                        Text="前往 GitHub 仓库" EventType="打开网页" EventData="https://github.com/PCL-In/PCL-In" />
         </StackPanel>
     </StackPanel>
 </local:MyCard>

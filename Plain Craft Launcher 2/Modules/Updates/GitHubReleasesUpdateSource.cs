@@ -1,5 +1,5 @@
 // GitHubReleasesUpdateSource.cs
-// 通过 GitHub Releases API 检测 ningqi24/PCL-In 仓库的最新发布版本。
+// 通过 GitHub Releases API 检测 PCL-In/PCL-In 仓库的最新发布版本。
 // 发布规则:
 // - Release tag: 遵循 SemVer,带或不带 "v" 前缀均可(例如 "v1.0.0" 或 "1.0.0")
 // - Asset 命名: "PCL-In-x64.exe" / "PCL-In-arm64.exe"(匹配当前 UpdateArch)

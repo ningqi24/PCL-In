@@ -245,7 +245,7 @@ public partial class PageSetupUpdate
 
     private void BtnChangelog_Click(object sender, MouseButtonEventArgs e)
     {
-        ModBase.OpenWebsite("https://github.com/ningqi24/PCL-In/releases/v" + ModBase.versionBaseName);
+        ModBase.OpenWebsite("https://github.com/PCL-In/PCL-In/releases/v" + ModBase.versionBaseName);
     }
 
     public string VersionNameFormat(string str)
