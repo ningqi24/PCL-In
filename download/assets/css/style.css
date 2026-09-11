@@ -144,11 +144,9 @@ code {
 }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--text); }
 .brand:hover { text-decoration: none; }
-.brand-logo {
-  display: grid; place-items: center;
-  width: 30px; height: 30px; border-radius: var(--r-sm);
-  background: var(--accent); color: var(--accent-fg);
-  box-shadow: var(--sh-accent);
+.brand-img {
+  display: block; flex: none;
+  width: 30px; height: 30px;
 }
 .brand-txt { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-txt b { font-size: 15px; letter-spacing: .2px; }

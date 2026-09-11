@@ -18,6 +18,10 @@
 [Lucide](https://lucide.dev)（ISC 许可），以**内联 SVG sprite** 形式写在 `index.html` 里，
 运行时不请求任何外部资源。
 
+站点 Logo 与 favicon 直接取自启动器自身的 `Plain Craft Launcher 2/Images/icon.png`，
+裁成圆角透明 PNG 后存放于 `assets/img/`：`logo.png`（256×256，顶栏 / 页脚 / 高清 favicon）、
+`favicon-32.png`、`apple-touch-icon.png`。
+
 提供 **明亮 / 暗色** 两套主题：默认跟随系统 `prefers-color-scheme`，点击右上角按钮可手动切换，
 选择记录在 `localStorage` 的 `pclinTheme`（在 `<head>` 的内联脚本里应用，避免首屏闪烁）。
 
