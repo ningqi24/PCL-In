@@ -2522,16 +2522,13 @@
     <sys:String x:Key="Setup.About.SpecialThanks.GoBlog">Blog</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Bmclapi">Provided BMCLAPI mirror and Forge installation tool. Details at https://bmclapi.bangbang93.com</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Cloud">Provided cloud services for PCL-CE.</sys:String>
-    <sys:String x:Key="Setup.About.SpecialThanks.Info.IconDesign">Designed and created the PCL-CE icon.</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.LinkModule">Provided the multiplayer module!</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Mcim">Provided MCIM community resource mirrors and image hosting services for the help centre!</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Mcmod">Provided Chinese translation of mods and more related information!</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Bangbang93">bangbang93</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.EasyTier">EasyTier</sys:String>
-    <sys:String x:Key="Setup.About.SpecialThanks.Name.Emperormummy">Emperormummy</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Mcmod">MCMod (MC 百科)</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Pysio">Pysio @ Akaere Network</sys:String>
-    <sys:String x:Key="Setup.About.SpecialThanks.Name.Yunmoan">云默安 @ 至远光辉</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Z0z0r4">z0z0r4</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.OpenMcmod">Website</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.OpenWebsite">Website</sys:String>

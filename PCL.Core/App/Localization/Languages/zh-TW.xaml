@@ -2522,16 +2522,13 @@
     <sys:String x:Key="Setup.About.SpecialThanks.GoBlog">轉到部落格</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Bmclapi">提供 BMCLAPI 鏡像來源和 Forge 安裝工具，詳見 https://bmclapi.bangbang93.com</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Cloud">提供了 PCL-CE 的相關雲服務</sys:String>
-    <sys:String x:Key="Setup.About.SpecialThanks.Info.IconDesign">設計並製作了 PCL-CE 的圖示</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.LinkModule">提供了連線模組</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Mcim">提供了 MCIM 社群資源鏡像來源和幫助庫圖床！</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Info.Mcmod">提供了模組名稱的中文翻譯和更多相關資訊！</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Bangbang93">bangbang93</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.EasyTier">EasyTier</sys:String>
-    <sys:String x:Key="Setup.About.SpecialThanks.Name.Emperormummy">Emperormummy</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Mcmod">MC 百科</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Pysio">Pysio @ Akaere Network</sys:String>
-    <sys:String x:Key="Setup.About.SpecialThanks.Name.Yunmoan">雲默安 @ 至遠光輝</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.Name.Z0z0r4">z0z0r4</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.OpenMcmod">開啟百科</sys:String>
     <sys:String x:Key="Setup.About.SpecialThanks.OpenWebsite">開啟網站</sys:String>
