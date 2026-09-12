@@ -237,7 +237,14 @@ public class GitHubReleasesUpdateSource : IUpdateSource
                 ?? throw new Exception("GitHub API 返回格式异常(非数组)");
             node = arr.FirstOrDefault(r => r?["prerelease"]?.GetValue<bool>() == true);
             if (node is null)
-                throw new Exception("未找到 beta(pre-release) release");
+            {
+                // 仓库里暂时没有预发布版本时退回正式版：否则 beta 构建即使网络完全正常，
+                // 也永远拿不到版本信息（旧版还会因此弹出一个与网络无关的报错）。
+                ModBase.Log("[Update] 仓库中没有 beta（预发布）版本，退回最新的正式版本");
+                node = arr.FirstOrDefault(r => r?["prerelease"]?.GetValue<bool>() != true);
+            }
+            if (node is null)
+                throw new Exception("未找到 beta(pre-release) release，且仓库中没有可用的正式版");
         }
         else
         {

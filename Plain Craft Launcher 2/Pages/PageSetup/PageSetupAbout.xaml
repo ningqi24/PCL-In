@@ -25,7 +25,6 @@
                         <RowDefinition Height="45" />
                         <RowDefinition Height="45" />
                         <RowDefinition Height="45" />
-                        <RowDefinition Height="45" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40" />
@@ -53,12 +52,12 @@
                         Margin="-5,0,15,0"
                         Info="{DynamicResource Setup.About.Version.Info}"
                         IsHitTestVisible="False"
-                        Title="{DynamicResource Setup.About.Community.Name}" />
+                        Title="{DynamicResource Setup.About.Version.Name}" />
                     <Image
                         x:Name="ImgPCLLogo"
                         Grid.Row="2"
                         Margin="3" MouseLeftButtonDown="ImgPCLLogo_Click"
-                        Source="/Plain Craft Launcher 2;component/Images/Heads/Logo-CE.png">
+                        Source="/Plain Craft Launcher 2;component/Images/Heads/Logo-In.png">
                         <Image.Clip>
                             <EllipseGeometry
                                 Center="17 17"
@@ -81,7 +80,7 @@
                         x:Name="ImgPCLCommunity"
                         Grid.Row="1"  MouseLeftButtonDown="ImgPCLCommunity_Click"
                         Margin="3"
-                        Source="/Plain Craft Launcher 2;component/Images/Heads/Logo-CE.png" />
+                        Source="/Plain Craft Launcher 2;component/Images/Heads/PCL-Community.png" />
                     <local:MyButton
                         Grid.Row="0"
                         Grid.Column="2"
@@ -100,40 +99,22 @@
                         Grid.Row="2"
                         Grid.Column="2"
                         Height="35"
-                        local:CustomEventService.EventData="https://github.com/PCL-Community/PCL-CE"
-                        local:CustomEventService.EventType="OpenUrl"
-                        Text="{DynamicResource Setup.About.SourceCode}" />
-                    <local:MyListItem
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        Margin="-5,0,15,0"
-                        Info="PCL-In 独立开发与维护，基于 PCL Community Edition 的二次 fork"
-                        IsHitTestVisible="False"
-                        Title="PCL-In" />
-                    <Image
-                        Grid.Row="3"
-                        Margin="3"
-                        Source="/Plain Craft Launcher 2;component/Images/Heads/Logo-In.png" />
-                    <local:MyButton
-                        Grid.Row="3"
-                        Grid.Column="2"
-                        Height="35"
                         local:CustomEventService.EventData="https://github.com/PCL-In/desktop"
                         local:CustomEventService.EventType="OpenUrl"
                         Text="{DynamicResource Setup.About.SourceCode}" />
                     <local:MyListItem
-                        Grid.Row="4"
+                        Grid.Row="3"
                         Grid.Column="1"
                         Margin="-5,0,15,0"
                         Info="PCL-In 的开发者！"
                         IsHitTestVisible="False"
                         Title="ningqi24" />
                     <Image
-                        Grid.Row="4"
+                        Grid.Row="3"
                         Margin="3"
                         Source="/Plain Craft Launcher 2;component/Images/Heads/ningqi24.png" />
                     <local:MyButton
-                        Grid.Row="4"
+                        Grid.Row="3"
                         Grid.Column="2"
                         Height="35"
                         local:CustomEventService.EventData="https://github.com/ningqi24"

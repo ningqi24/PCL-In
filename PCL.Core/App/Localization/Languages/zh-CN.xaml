@@ -2457,7 +2457,7 @@
     <!-- Setup.About -->
 
     <sys:String x:Key="Setup.About.Community.Info">Plain Craft Launcher Community Edition 的开发团队！</sys:String>
-    <sys:String x:Key="Setup.About.Community.Name">PCL-CE</sys:String>
+    <sys:String x:Key="Setup.About.Community.Name">PCL-Community</sys:String>
     <sys:String x:Key="Setup.About.Contributors.Title">贡献者们</sys:String>
     <sys:String x:Key="Setup.About.Contributors.ViewMore">查看更多</sys:String>
     <sys:String x:Key="Setup.About.Error.LoadContributorsFailed">加载贡献者信息失败</sys:String>
@@ -2476,6 +2476,7 @@
     <sys:String x:Key="Setup.About.UpstreamLegal.TermsAndDisclaimer">用户协议与免责声明</sys:String>
     <sys:String x:Key="Setup.About.UpstreamLegal.Title">上游版权与法律信息</sys:String>
     <sys:String x:Key="Setup.About.Version.Info">当前版本: %VERSION% (%BRANCH%, %VERSIONCODE%, %COMMIT_HASH%)</sys:String>
+    <sys:String x:Key="Setup.About.Version.Name">PCL-In</sys:String>
 
     <!-- Setup.About.EasterEgg -->
 

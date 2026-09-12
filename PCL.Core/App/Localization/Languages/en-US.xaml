@@ -2457,7 +2457,7 @@
     <!-- Setup.About -->
 
     <sys:String x:Key="Setup.About.Community.Info">The development team of Plain Craft Launcher Community Edition!</sys:String>
-    <sys:String x:Key="Setup.About.Community.Name">PCL-CE</sys:String>
+    <sys:String x:Key="Setup.About.Community.Name">PCL-Community</sys:String>
     <sys:String x:Key="Setup.About.Contributors.Title">Contributors</sys:String>
     <sys:String x:Key="Setup.About.Contributors.ViewMore">View more</sys:String>
     <sys:String x:Key="Setup.About.Error.LoadContributorsFailed">Failed to load contributor information</sys:String>
@@ -2476,6 +2476,7 @@
     <sys:String x:Key="Setup.About.UpstreamLegal.TermsAndDisclaimer">ToS &amp; Disclaimer</sys:String>
     <sys:String x:Key="Setup.About.UpstreamLegal.Title">Upstream legal information</sys:String>
     <sys:String x:Key="Setup.About.Version.Info">Current version: %VERSION% (%BRANCH%, %VERSIONCODE%, %COMMIT_HASH%)</sys:String>
+    <sys:String x:Key="Setup.About.Version.Name">PCL-In</sys:String>
 
     <!-- Setup.About.EasterEgg -->
 
