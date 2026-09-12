@@ -12,6 +12,11 @@ on:
       architecture:
         required: true
         type: string
+      version_tag:
+        required: false
+        type: string
+        default: ''
+        description: 发布 tag（如 v1.0.1）；非空时按其重写 metadata.json 的版本号
 
 jobs:
   build:
@@ -28,6 +33,37 @@ jobs:
         run: |
           describe=`git describe --tags --always`
           echo "describe=$describe" >> $GITHUB_ENV
+
+      - name: Generate metadata version from tag
+        if: inputs.version_tag != ''
+        env:
+          RELEASE_TAG: ${{ inputs.version_tag }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, re, sys
+
+          tag = os.environ.get("RELEASE_TAG", "").strip()
+          if not tag:
+              sys.exit(0)
+
+          version = tag[1:] if tag[:1] in ("v", "V") else tag
+          match = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?", version)
+          if not match:
+              sys.exit(f"::error::无法从 tag {tag!r} 解析版本号（应为 v1.2.3 或 v1.2.3-beta.1）")
+
+          major, minor, patch = (int(match.group(i)) for i in (1, 2, 3))
+          suffix = match.group(4) or ""
+          pre = int(m.group(1)) if (m := re.search(r"(\d+)$", suffix)) else 0
+
+          # 与 GitHubReleasesUpdateSource 计算远端 version code 的公式保持一致
+          code = major * 1_000_000 + minor * 10_000 + patch * 100 + pre
+
+          path = pathlib.Path("Plain Craft Launcher 2/metadata.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          data["version"].update(base=f"{major}.{minor}.{patch}", suffix=suffix, code=code)
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(f"metadata.json <- {tag}: base={major}.{minor}.{patch} suffix={suffix or '(空)'} code={code}")
+          PY
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v5
