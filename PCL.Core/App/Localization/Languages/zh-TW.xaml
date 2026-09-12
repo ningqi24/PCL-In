@@ -2577,6 +2577,8 @@
 
     <sys:String x:Key="Setup.GameLink.CliDebugOutput">在日誌中輸出 Cli 資訊以用於除錯</sys:String>
     <sys:String x:Key="Setup.GameLink.CliDebugOutput.ToolTip">在啟動器日誌中每 30s 輸出一次 EasyTier Cli 資訊以便於開發者和社群支援調查。&#xA;該選項僅用於除錯目的，不推薦一直開啟。</sys:String>
+    <sys:String x:Key="Setup.GameLink.CustomNode">自訂節點</sys:String>
+    <sys:String x:Key="Setup.GameLink.CustomNode.ToolTip">留空則使用內建的 EasyTier 公共節點。&#xA;若內建節點連不上，需要連線雙方填寫至少一個相同的公共節點才能建立連線。&#xA;多個節點請用英文分號分隔。</sys:String>
     <sys:String x:Key="Setup.GameLink.EnableIPv6">允許使用 IPv6 通訊</sys:String>
     <sys:String x:Key="Setup.GameLink.EnableIPv6.ToolTip">IPv6 相比於 IPv4 更容易進行 P2P 通訊，能極大改善連線體驗，除有特殊原因外不建議關閉。</sys:String>
     <sys:String x:Key="Setup.GameLink.Error.ConfigChangeFailed">改變設定項失敗</sys:String>

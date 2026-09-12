@@ -2577,6 +2577,8 @@
 
     <sys:String x:Key="Setup.GameLink.CliDebugOutput">Output CLI information to logs for debugging</sys:String>
     <sys:String x:Key="Setup.GameLink.CliDebugOutput.ToolTip">Output EasyTier CLI information to the launcher log every 30 seconds for developer and community support investigation.&#xA;This option is for debugging only and is not recommended to keep enabled.</sys:String>
+    <sys:String x:Key="Setup.GameLink.CustomNode">Custom nodes</sys:String>
+    <sys:String x:Key="Setup.GameLink.CustomNode.ToolTip">Leave empty to use the built-in EasyTier public nodes.&#xA;If those are unreachable, both players must enter at least one identical public node to connect.&#xA;Separate multiple nodes with a semicolon.</sys:String>
     <sys:String x:Key="Setup.GameLink.EnableIPv6">Allow IPv6 communication</sys:String>
     <sys:String x:Key="Setup.GameLink.EnableIPv6.ToolTip">Compared with IPv4, IPv6 makes P2P communication easier and can greatly improve the multiplayer experience. Do not disable it unless you have a specific reason.</sys:String>
     <sys:String x:Key="Setup.GameLink.Error.ConfigChangeFailed">Failed to change configuration item.</sys:String>

@@ -430,7 +430,10 @@ public partial class PageToolsGameLink
                     ["requireLogin"] = false,
                     ["requireRealname"] = false,
                     ["version"] = LobbyInfoProvider.ProtocolVersion,
-                    ["notices"] = new JsonArray()
+                    ["notices"] = new JsonArray(),
+                    // 必须给一个空数组：下面解析中继节点时会直接遍历这个字段，
+                    // 缺字段会让异常冒到外层 catch，把整个联机功能判定为不可用。
+                    ["relays"] = new JsonArray()
                 };
 
                 #region 解析基础状态与版本限制

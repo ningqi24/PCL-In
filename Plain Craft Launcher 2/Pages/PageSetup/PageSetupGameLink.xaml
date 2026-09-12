@@ -35,6 +35,8 @@
                             <RowDefinition Height="28" />
                             <!--<RowDefinition Height="4" />
                         <RowDefinition Height="35" />-->
+                            <RowDefinition Height="8" />
+                            <RowDefinition Height="28" />
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{DynamicResource Setup.GameLink.Username}"
                                    Margin="0,0,25,0" />
@@ -80,6 +82,12 @@
                         <local:MyCheckBox x:Name="CheckEnableCliOutput" Tag="LinkEnableCliOutput" Grid.Row="7"
                                           Grid.ColumnSpan="3" Text="{DynamicResource Setup.GameLink.CliDebugOutput}" Change="CheckBoxChange"
                                           ToolTip="{DynamicResource Setup.GameLink.CliDebugOutput.ToolTip}" />
+                        <TextBlock Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                   Text="{DynamicResource Setup.GameLink.CustomNode}" Margin="0,0,25,0" />
+                        <local:MyTextBox x:Name="TextLinkRelay" Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" Tag="LinkRelayServer"
+                                         TextChanged="TextBoxChange"
+                                         HintText="tcp://主机:端口，多个用英文分号分隔"
+                                         ToolTip="{DynamicResource Setup.GameLink.CustomNode.ToolTip}" />
                         <!--<local:MyButton Grid.Row="17" HorizontalAlignment="Left" Grid.ColumnSpan="3" Width="120" Text="社区节点列表" EventType="打开网页" EventData="https://uptime.easytier.cn/" ColorType="Highlight" ToolTip="查看 EasyTier 社区提供的节点。&#xa;你也可以在此页面提交自己的节点，以帮助整个社区优化连接。"/>-->
                     </Grid>
                 </StackPanel>

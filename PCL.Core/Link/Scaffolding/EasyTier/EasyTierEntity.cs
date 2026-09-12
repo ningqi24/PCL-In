@@ -204,9 +204,7 @@ public class EasyTierEntity
                 .Add("l", "udp://0.0.0.0:0");
         }
 
-        foreach (var address in ETRelay.RelayList
-            .Select(static x => x.Url)
-            .Concat(_fallbackNodeLinks))
+        foreach (var address in _GetPeerLinks())
         {
             args.Add("p", address);
         }
@@ -278,6 +276,39 @@ public class EasyTierEntity
         "https://etnode.zkitefly.eu.org/-node1",
         "https://etnode.zkitefly.eu.org/-node2"
     ];
+
+    /// <summary>
+    /// 组装交给 EasyTier 的会合节点：自定义节点 + 大厅服务器下发的节点 + 内置兜底节点。
+    /// 至少需要一个联机双方都能连到的节点，否则两端的 EasyTier 无法互相发现。
+    /// </summary>
+    private IEnumerable<string> _GetPeerLinks()
+    {
+        var customedNodes = Config.Link.CustomRelayServer.Split(';', StringSplitOptions.RemoveEmptyEntries);
+        foreach (var node in customedNodes)
+        {
+            var url = node.Trim();
+            if (url.StartsWith("tcp://", StringComparison.OrdinalIgnoreCase) ||
+                url.StartsWith("udp://", StringComparison.OrdinalIgnoreCase) ||
+                url.StartsWith("ws://", StringComparison.OrdinalIgnoreCase) ||
+                url.StartsWith("wss://", StringComparison.OrdinalIgnoreCase) ||
+                url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                yield return url;
+            else
+                LogWrapper.Warn("EasyTier", $"忽略无效的自定义节点地址：{node}");
+        }
+
+        if (Config.Link.ServerType == 2)
+        {
+            // 「不使用预设节点」：只用自定义节点
+            if (customedNodes.Length == 0)
+                LogWrapper.Warn("EasyTier", "已选择不使用预设节点，但没有填写自定义节点，将无法与其他玩家建立连接");
+            yield break;
+        }
+
+        foreach (var relay in ETRelay.RelayList) yield return relay.Url;
+        foreach (var link in _fallbackNodeLinks) yield return link;
+    }
 
 
     private async Task<IReadOnlyList<string>> _GetPublicNodeAsync()

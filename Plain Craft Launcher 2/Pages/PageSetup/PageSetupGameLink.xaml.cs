@@ -42,7 +42,7 @@ public partial class PageSetupGameLink
     public void Reload()
     {
         TextLinkUsername.Text = Config.Link.Username;
-        // TextLinkRelay.Text = Config.Link.RelayServer
+        TextLinkRelay.Text = Config.Link.CustomRelayServer;
         // ComboRelayType.SelectedIndex = Config.Link.RelayType
         // ComboServerType.SelectedIndex = Config.Link.ServerType
         CheckLatencyFirstMode.Checked = Config.Link.UseLatencyFirstMode;
