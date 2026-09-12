@@ -51,7 +51,7 @@
                         Grid.Row="2"
                         Grid.Column="1"
                         Margin="-5,0,15,0"
-                        Info="{DynamicResource Setup.About.Version.Info}"
+                        Info="PCL 社区版 由社区开发者维护与管理"
                         IsHitTestVisible="False"
                         Title="PCL-CE" />
                     <Image
