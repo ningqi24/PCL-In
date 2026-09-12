@@ -36,20 +36,23 @@ public class MyScrollBar : ScrollBar
             }
             else if (IsMouseCaptureWithin)
             {
-                newOpacity = 1d;
+                // PCL-In:拖动时稍微明显一点，但仍然是淡色
+                newOpacity = 0.85d;
                 newColor = "ColorBrush4";
                 time = 50;
             }
             else if (IsMouseOver)
             {
-                newOpacity = 0.9d;
-                newColor = "ColorBrush3";
+                // PCL-In:鼠标碰到滚动条才显示，且颜色很淡
+                newOpacity = 0.4d;
+                newColor = "ColorBrush5";
                 time = 130;
             }
             else
             {
-                newOpacity = 0.5d;
-                newColor = "ColorBrush4";
+                // PCL-In:默认完全不显示滚动条
+                newOpacity = 0d;
+                newColor = "ColorBrush5";
                 time = 180;
             }
 

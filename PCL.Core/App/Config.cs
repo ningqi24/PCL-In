@@ -433,6 +433,9 @@ public static partial class Config
             // 顶部导航仅显示图标(不显示文字)
             [ConfigItem<bool>("UiTabIconOnly", true, ConfigSource.Local)] public partial bool TabIconOnly { get; set; }
 
+            // 左侧栏仅显示图标(不显示文字)
+            [ConfigItem<bool>("UiPageLeftIconOnly", false, ConfigSource.Local)] public partial bool PageLeftIconOnly { get; set; }
+
             // 主页面
             [ConfigItem<bool>("UiHiddenPageDownload", false, ConfigSource.Local)] public partial bool PageDownload { get; set; }
             [ConfigItem<bool>("UiHiddenPageSetup", false, ConfigSource.Local)] public partial bool PageSetup { get; set; }

@@ -56,6 +56,7 @@ public partial class PageSetupUI
             ComboLightColor.SelectedIndex = (int)Config.Preference.Theme.LightColor;
             CheckShowLaunchingHint.Checked = Config.Preference.ShowLaunchingHint;
             CheckTabIconOnly.Checked = Config.Preference.Hide.TabIconOnly;
+            CheckPageLeftIconOnly.Checked = Config.Preference.Hide.PageLeftIconOnly;
 
             // 字体设置
             ComboUiFont.SelectedFontTag = Config.Preference.Font;
@@ -225,6 +226,9 @@ public partial class PageSetupUI
                 ModMain.frmMain.BtnTitleSelect2.ShowText = !iconOnly;
                 ModMain.frmMain.BtnTitleSelect3.ShowText = !iconOnly;
             }
+            // PCL-In:左侧栏仅显示图标,实时应用到已加载的左侧栏
+            if (sender.Tag?.ToString() == "UiPageLeftIconOnly")
+                MyPageLeft.RefreshIconOnlyAll();
         }
     }
 

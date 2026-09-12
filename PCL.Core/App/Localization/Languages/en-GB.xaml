@@ -3029,6 +3029,8 @@
     <sys:String x:Key="Setup.Ui.Basic.ShowTriviaHint">Show 'Trivia' when launching the game</sys:String>
     <sys:String x:Key="Setup.Ui.Basic.TabIconOnly">Top navigation shows icons only</sys:String>
     <sys:String x:Key="Setup.Ui.Basic.TabIconOnly.ToolTip">When enabled, the Launcher/Download/Settings/Tools navigation tabs show only icons with no text.</sys:String>
+    <sys:String x:Key="Setup.Ui.Basic.PageLeftIconOnly">Sidebar shows icons only</sys:String>
+    <sys:String x:Key="Setup.Ui.Basic.PageLeftIconOnly.ToolTip">When enabled, the left lists on the Settings/Download/Tools pages show only icons with no text.</sys:String>
     <sys:String x:Key="Setup.Ui.Basic.Title">Basics</sys:String>
 
     <!-- Setup.Ui.FeatureHide -->

@@ -3029,6 +3029,8 @@
     <sys:String x:Key="Setup.Ui.Basic.ShowTriviaHint">在启动游戏时显示"你知道吗"</sys:String>
     <sys:String x:Key="Setup.Ui.Basic.TabIconOnly">顶部导航仅显示图标</sys:String>
     <sys:String x:Key="Setup.Ui.Basic.TabIconOnly.ToolTip">开启后，启动/下载/设置/工具四个导航标签只显示图标，不显示文字。</sys:String>
+    <sys:String x:Key="Setup.Ui.Basic.PageLeftIconOnly">左侧栏仅显示图标</sys:String>
+    <sys:String x:Key="Setup.Ui.Basic.PageLeftIconOnly.ToolTip">开启后，设置、下载、工具等页面的左侧列表只显示图标，不显示文字。</sys:String>
     <sys:String x:Key="Setup.Ui.Basic.Title">基础</sys:String>
 
     <!-- Setup.Ui.FeatureHide -->

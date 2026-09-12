@@ -181,7 +181,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ScrollBar">
-                            <Border CornerRadius="2">
+                            <!-- PCL-In:整条滚动条区域都要可命中，否则鼠标只有停在滑块上才会触发展示 -->
+                            <Border Background="Transparent" CornerRadius="2">
                                 <Track x:Name="PART_Track" IsDirectionReversed="true"
                                        IsEnabled="{TemplateBinding IsMouseOver}">
                                     <Track.Resources>

@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using PCL.Core.App;
 
 namespace PCL;
 
@@ -156,6 +157,98 @@ public class MyPageLeft : Grid
                 GetAllAnimControls(Element2, ref allControls, ignoreInvisibility);
         else
             allControls.Add(element);
+    }
+
+    // PCL-In：左侧栏仅显示图标
+
+    private static readonly List<MyPageLeft> IconOnlyPages = new();
+
+    public MyPageLeft()
+    {
+        Loaded += (_, _) =>
+        {
+            if (!IconOnlyPages.Contains(this))
+                IconOnlyPages.Add(this);
+            RefreshIconOnly();
+        };
+        Unloaded += (_, _) => IconOnlyPages.Remove(this);
+    }
+
+    /// <summary>
+    ///     按当前设置刷新所有已加载的左侧栏。
+    /// </summary>
+    public static void RefreshIconOnlyAll()
+    {
+        foreach (var page in IconOnlyPages.ToArray())
+            page.RefreshIconOnly();
+    }
+
+    /// <summary>
+    ///     按当前设置刷新左侧栏：开启“仅显示图标”时隐藏列表项标题与分组文字。
+    /// </summary>
+    public void RefreshIconOnly()
+    {
+        try
+        {
+            var iconOnly = Config.Preference.Hide.PageLeftIconOnly;
+            var items = new List<MyListItem>();
+            CollectListItems(this, items);
+            foreach (var item in items)
+                item.ApplyLeftIconOnly(iconOnly);
+            var panel = FindItemPanel(this);
+            if (panel is null)
+                return;
+            // 只有确实带了图标的列表才隐藏分类标题，否则（文件夹列表、日志列表等）保持原样
+            var hideGroupText = iconOnly && items.Any(item => item.HasListLogo);
+            foreach (var child in panel.Children)
+                if (child is TextBlock text)
+                    text.Visibility = hideGroupText ? Visibility.Collapsed : Visibility.Visible;
+        }
+        catch (Exception ex)
+        {
+            ModBase.Log(ex, "刷新左侧栏仅显示图标状态出错");
+        }
+    }
+
+    // 递归收集左侧栏内的所有列表项
+    private static void CollectListItems(DependencyObject? element, List<MyListItem> result)
+    {
+        switch (element)
+        {
+            case MyListItem item: // MyListItem 本身就是 Panel，这一条必须放在前面
+                result.Add(item);
+                break;
+            case Panel panel:
+                foreach (UIElement child in panel.Children)
+                    CollectListItems(child, result);
+                break;
+            case ContentControl content when content.Content is DependencyObject inner:
+                CollectListItems(inner, result);
+                break;
+        }
+    }
+
+    // 找到直接容纳列表项的那个面板，好一并处理与列表项同级的分类标题
+    private static Panel? FindItemPanel(DependencyObject? element)
+    {
+        switch (element)
+        {
+            case Panel panel:
+                foreach (UIElement child in panel.Children)
+                    if (child is MyListItem)
+                        return panel;
+                foreach (UIElement child in panel.Children)
+                {
+                    var found = FindItemPanel(child);
+                    if (found is not null)
+                        return found;
+                }
+                return null;
+            case ContentControl content when content.Content is DependencyObject inner:
+                return FindItemPanel(inner);
+            default:
+                return null;
+        }
     }
 }
 

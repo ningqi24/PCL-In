@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using PCL.Core.App;
 using PCL.Core.UI.Controls.SvgIcon;
 
 namespace PCL;
@@ -172,6 +173,38 @@ public partial class MyListItem : IMyRadio
         else
             SetResourceReference(ForegroundProperty, "ColorBrush1");
         ColumnPaddingRight.Width = new GridLength(MinPaddingRight);
+        RefreshLeftIconOnly();
+    }
+
+    // PCL-In：位于左侧栏内时，按“左侧栏仅显示图标”设置决定是否显示标题
+    private void RefreshLeftIconOnly()
+    {
+        try
+        {
+            DependencyObject? parent = this;
+            while ((parent = VisualTreeHelper.GetParent(parent)) is not null)
+            {
+                if (parent is not MyPageLeft)
+                    continue;
+                ApplyLeftIconOnly(Config.Preference.Hide.PageLeftIconOnly);
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            ModBase.Log(ex, "刷新列表项标题显示状态出错", ModBase.LogLevel.Debug);
+        }
+    }
+
+    // PCL-In：本项目自身是否带图标（没有图标的项目在图标模式下会变成空白，必须保留标题）
+    public bool HasListLogo => IsUsingSvgIcon || !string.IsNullOrEmpty(Logo);
+
+    /// <summary>
+    ///     按“左侧栏仅显示图标”设置刷新标题显示状态（PCL-In）。
+    /// </summary>
+    public void ApplyLeftIconOnly(bool iconOnly)
+    {
+        SetTitleVisible(!iconOnly || !HasListLogo);
     }
 
     public override string ToString()
@@ -438,6 +471,14 @@ public partial class MyListItem : IMyRadio
 
     public static readonly DependencyProperty TitleProperty =
         DependencyProperty.Register("Title", typeof(string), typeof(MyListItem));
+
+    /// <summary>
+    ///     设置是否显示标题文本（PCL-In：左侧栏开启“仅显示图标”时隐藏）。
+    /// </summary>
+    public void SetTitleVisible(bool visible)
+    {
+        LabTitle.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+    }
 
     // 字号
     public double FontSize

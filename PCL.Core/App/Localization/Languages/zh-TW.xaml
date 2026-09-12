@@ -3029,6 +3029,8 @@
     <sys:String x:Key="Setup.Ui.Basic.ShowTriviaHint">在啟動遊戲時顯示"你知道嗎"</sys:String>
     <sys:String x:Key="Setup.Ui.Basic.TabIconOnly">頂部導航僅顯示圖示</sys:String>
     <sys:String x:Key="Setup.Ui.Basic.TabIconOnly.ToolTip">開啟後，啟動/下載/設定/工具四個導航標籤只顯示圖示，不顯示文字。</sys:String>
+    <sys:String x:Key="Setup.Ui.Basic.PageLeftIconOnly">左側欄僅顯示圖示</sys:String>
+    <sys:String x:Key="Setup.Ui.Basic.PageLeftIconOnly.ToolTip">開啟後，設定、下載、工具等頁面的左側清單只顯示圖示，不顯示文字。</sys:String>
     <sys:String x:Key="Setup.Ui.Basic.Title">基礎</sys:String>
 
     <!-- Setup.Ui.FeatureHide -->
