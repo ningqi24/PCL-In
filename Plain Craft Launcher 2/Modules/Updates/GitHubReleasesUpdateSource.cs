@@ -119,18 +119,14 @@ public class GitHubReleasesUpdateSource : IUpdateSource
 
     public bool IsLatest(UpdateChannel channel, UpdateArch arch, SemVer currentVersion, int currentVersionCode)
     {
-        try
-        {
-            var info = GetLatestAsync(channel).GetAwaiter().GetResult();
-            // 把 GitHub tag 名(可能带 "v" 前缀)解析为 SemVer 与当前版本比较
-            var latestTag = info.Tag.StartsWith("v", StringComparison.OrdinalIgnoreCase) ? info.Tag[1..] : info.Tag;
-            return currentVersion >= SemVer.Parse(latestTag);
-        }
-        catch
-        {
-            // 网络失败时不要阻塞,返回 true(避免误报)
-            return true;
-        }
+        // PCL-In:这里以前写的是 catch { return true; }，注释是"网络失败时不要阻塞,返回 true(避免误报)"。
+        // 结果任何失败（网络不通、API 403、release 里没有匹配的 tag……）都会显示成"已是最新版本"，
+        // 把真实原因彻底藏起来——v1.0.1 就是因为这个，永远看不到新版本，也永远不报错。
+        // 现在异常直接抛出去，由 PageSetupUpdate.IsLatestAsync 显示"检查更新失败"。
+        var info = GetLatestAsync(channel).GetAwaiter().GetResult();
+        // 把 GitHub tag 名(可能带 "v" 前缀)解析为 SemVer 与当前版本比较
+        var latestTag = info.Tag.StartsWith("v", StringComparison.OrdinalIgnoreCase) ? info.Tag[1..] : info.Tag;
+        return currentVersion >= SemVer.Parse(latestTag);
     }
 
     public VersionAnnouncementDataModel GetAnnouncementList()

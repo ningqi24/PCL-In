@@ -12,6 +12,11 @@ public partial class MyMsgMarkdown
     private readonly ModMain.MyMsgBoxConverter myConverter;
     private readonly int uuid = ModBase.GetUuid();
 
+    /// <summary>
+    ///     XAML 是否初始化成功（PCL-In：失败时调用方应降级为纯文本弹窗，避免界面上留下一个空壳弹窗）
+    /// </summary>
+    public bool IsInitialized { get; private set; }
+
     public MyMsgMarkdown(ModMain.MyMsgBoxConverter converter)
     {
         try
@@ -28,15 +33,14 @@ public partial class MyMsgMarkdown
             ConfigureSecondaryButton(Btn2, converter.Button2);
             ConfigureSecondaryButton(Btn3, converter.Button3);
             ShapeLine.StrokeThickness = ModBase.GetWPFSize(1d);
+            IsInitialized = true;
         }
 
         catch (Exception ex)
         {
-            ModBase.Log(
-                ex,
-                "普通弹窗初始化失败",
-                ModBase.LogLevel.Hint,
-                userSummary: Lang.Text("Application.Control.MessageBox.Error.OperationFailed"));
+            // PCL-In：这里不再向用户弹"消息弹窗操作失败"。Markdown 渲染不可用时由调用方
+            // 降级成纯文本弹窗，用户照样能看到更新日志，没必要再吓一次。
+            ModBase.Log(ex, "Markdown 弹窗初始化失败，将降级为纯文本弹窗", ModBase.LogLevel.Normal);
         }
 
         Loaded += Load;
@@ -65,6 +69,10 @@ public partial class MyMsgMarkdown
 
     private void Load(object sender, EventArgs e)
     {
+        // PCL-In：初始化失败时 LabTitle/LabCaption/Btn* 全是 null，这里直接返回，
+        // 否则会再抛一次 NullReferenceException。
+        if (!IsInitialized)
+            return;
         try
         {
             // UI 初始化

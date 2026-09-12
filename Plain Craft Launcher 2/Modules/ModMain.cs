@@ -666,7 +666,19 @@ public static class ModMain
                     }
                     case MyMsgBoxType.Markdown:
                     {
-                        frmMain.PanMsg.Children.Add(new MyMsgMarkdown(WaitingMyMsgBox[0]));
+                        // PCL-In：Markdown 渲染器不可用时（例如打包后 Markdig 加载失败）降级为纯文本弹窗。
+                        // 以前这里会直接把这个没初始化完的控件塞进界面，结果是一个标题都没设置、
+                        // 正文空白的空壳弹窗，并在 Loaded 时再抛一次 NullReferenceException。
+                        var markdown = new MyMsgMarkdown(WaitingMyMsgBox[0]);
+                        if (markdown.IsInitialized)
+                        {
+                            frmMain.PanMsg.Children.Add(markdown);
+                        }
+                        else
+                        {
+                            ModBase.Log("[Control] Markdown 渲染不可用，已降级为纯文本弹窗", ModBase.LogLevel.Normal);
+                            frmMain.PanMsg.Children.Add(new MyMsgText(WaitingMyMsgBox[0]));
+                        }
                         break;
                     }
                 }
